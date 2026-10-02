@@ -7,6 +7,63 @@ Every relative is a **face + their real voice + their relationship _to the elder
 
 ---
 
+## Yaadain 2: the redesign
+
+Version 2 redesigns the whole app: 35 screens across every phone in the family. These are the finished designs, and they are being built into the app now.
+
+- **One language per screen.** The elder's screens are entirely Urdu, set in Noto Nastaliq. The family's screens are entirely English. Nothing mixes the two, and every screen passes an automated script-mixing check.
+- **Built for his hands and eyes.** Touch targets are 56px or larger (main actions 64 to 80px), no Urdu text is smaller than 20px, and every screen has the same back and home buttons. One warm clay colour marks the single most important action on a screen.
+- **The family can find him.** If Dada Jaan leaves a safe zone, the family is alerted and can see where he is. One of them taps "I'm on my way", and his phone tells him, in Urdu, that Bilal is coming.
+
+<p align="center"><img src="design/screens/FlowMap.png" alt="Flow map of every screen and how they connect"></p>
+
+### Setting up
+
+<table>
+<tr><td align="center" valign="top" width="25%"><img src="design/screens/Splash.png" width="190" alt="Launch"><br><sub>Launch</sub></td><td align="center" valign="top" width="25%"><img src="design/screens/RoleSelection.png" width="190" alt="Who will use this phone?"><br><sub>Who will use this phone?</sub></td><td align="center" valign="top" width="25%"><img src="design/screens/JoinFamily.png" width="190" alt="Join with a family code"><br><sub>Join with a family code</sub></td><td align="center" valign="top" width="25%"><img src="design/screens/ElderPhoneSetup.png" width="190" alt="Set up his phone"><br><sub>Set up his phone</sub></td></tr>
+<tr><td align="center" valign="top" width="25%"><img src="design/screens/Permissions.png" width="190" alt="What his phone needs"><br><sub>What his phone needs</sub></td><td align="center" valign="top" width="25%"><img src="design/screens/Khayal.png" width="190" alt="Consent, explained to him in Urdu"><br><sub>Consent, explained to him in Urdu</sub></td><td align="center" valign="top" width="25%"><img src="design/screens/ConsentRecord.png" width="190" alt="Consent recorded"><br><sub>Consent recorded</sub></td><td align="center" valign="top" width="25%"><img src="design/screens/AppIcon.png" width="190" alt="App icon"><br><sub>App icon</sub></td></tr>
+</table>
+
+### The elder's phone (Urdu only)
+
+<table>
+<tr><td align="center" valign="top" width="25%"><img src="design/screens/Main.png" width="190" alt="Home, daytime"><br><sub>Home, daytime</sub></td><td align="center" valign="top" width="25%"><img src="design/screens/ElderHomeEvening.png" width="190" alt="Home, evening"><br><sub>Home, evening</sub></td><td align="center" valign="top" width="25%"><img src="design/screens/FamilyTree.png" width="190" alt="My family"><br><sub>My family</sub></td><td align="center" valign="top" width="25%"><img src="design/screens/WhoIsThis.png" width="190" alt="Who is this?"><br><sub>Who is this?</sub></td></tr>
+<tr><td align="center" valign="top" width="25%"><img src="design/screens/MemberDetail.png" width="190" alt="A relative: Bilal"><br><sub>A relative: Bilal</sub></td><td align="center" valign="top" width="25%"><img src="design/screens/Poochhein.png" width="190" alt="Ask (Poochhein)"><br><sub>Ask (Poochhein)</sub></td><td align="center" valign="top" width="25%"><img src="design/screens/Sukoon.png" width="190" alt="Calm (Sukoon)"><br><sub>Calm (Sukoon)</sub></td><td align="center" valign="top" width="25%"><img src="design/screens/Voices.png" width="190" alt="Voices"><br><sub>Voices</sub></td></tr>
+<tr><td align="center" valign="top" width="25%"><img src="design/screens/RoutinePrompt.png" width="190" alt="Medicine reminder"><br><sub>Medicine reminder</sub></td></tr>
+</table>
+
+### Safety: keeping him found
+
+<table>
+<tr><td align="center" valign="top" width="25%"><img src="design/screens/Madad.png" width="190" alt="Help: when he is outside"><br><sub>Help: when he is outside</sub></td><td align="center" valign="top" width="25%"><img src="design/screens/ImSafe.png" width="190" alt="You are safe"><br><sub>You are safe</sub></td><td align="center" valign="top" width="25%"><img src="design/screens/IfFoundUr.png" width="190" alt="If found (Urdu)"><br><sub>If found (Urdu)</sub></td><td align="center" valign="top" width="25%"><img src="design/screens/IfFoundEn.png" width="190" alt="If found (English)"><br><sub>If found (English)</sub></td></tr>
+<tr><td align="center" valign="top" width="25%"><img src="design/screens/NightAnchor.png" width="190" alt="Night"><br><sub>Night</sub></td><td align="center" valign="top" width="25%"><img src="design/screens/WhereIsAbu.png" width="190" alt="Where is Abu (family)"><br><sub>Where is Abu (family)</sub></td><td align="center" valign="top" width="25%"><img src="design/screens/AlertDetail.png" width="190" alt="Alert (family)"><br><sub>Alert (family)</sub></td><td align="center" valign="top" width="25%"><img src="design/screens/SafeZones.png" width="190" alt="Safe zones (family)"><br><sub>Safe zones (family)</sub></td></tr>
+<tr><td align="center" valign="top" width="25%"><img src="design/screens/FindAbu.png" width="190" alt="Find Abu (family)"><br><sub>Find Abu (family)</sub></td></tr>
+</table>
+
+### The family's phones (English only)
+
+<table>
+<tr><td align="center" valign="top" width="25%"><img src="design/screens/CaregiverHome.png" width="190" alt="Caregiver home"><br><sub>Caregiver home</sub></td><td align="center" valign="top" width="25%"><img src="design/screens/FamilyHome.png" width="190" alt="Family member home"><br><sub>Family member home</sub></td><td align="center" valign="top" width="25%"><img src="design/screens/AddRelative.png" width="190" alt="Add a relative"><br><sub>Add a relative</sub></td><td align="center" valign="top" width="25%"><img src="design/screens/AnswersEditor.png" width="190" alt="Answers he can ask for"><br><sub>Answers he can ask for</sub></td></tr>
+<tr><td align="center" valign="top" width="25%"><img src="design/screens/Routine.png" width="190" alt="Routine and medicine"><br><sub>Routine and medicine</sub></td><td align="center" valign="top" width="25%"><img src="design/screens/WeeklyReport.png" width="190" alt="Weekly report"><br><sub>Weekly report</sub></td><td align="center" valign="top" width="25%"><img src="design/screens/RecordHello.png" width="190" alt="Record a hello"><br><sub>Record a hello</sub></td><td align="center" valign="top" width="25%"><img src="design/screens/CareCircle.png" width="190" alt="Care circle"><br><sub>Care circle</sub></td></tr>
+</table>
+
+### Design system
+
+| | |
+|---|---|
+| Colour | Paper `#F3EBDC`, ink `#2C2620`, teal `#1F6F5C`. Clay `#9E5626` marks the one care action per screen. Red `#B3261E` is used only for a true emergency. A sepia ring `#A9998A` marks relatives who have passed away. |
+| Type | Noto Nastaliq Urdu for Urdu; Nunito and Fraunces for English. |
+| Motif | A jaali lattice, taken from South Asian screen windows. |
+| Demo family | Dada Jaan (Muhammad Akram, 78), his son and caregiver Bilal, his daughter Fatima in Lahore, his daughter-in-law Ayesha, his grandchildren Zaid, Maryam and Hassan, and Ruqayya, his late wife. All are fictional. |
+
+### Design files
+
+- `design/screens/`: a PNG of every screen
+- `design/boards/`: the HTML source of every screen; open any file in a browser
+- `design/canvas.json`: the layout of the design canvas
+
+---
+
 ## Why this, and why this shape
 
 Yaadain is a culturally-grounded instantiation of two evidence-supported dementia-care approaches — **reminiscence therapy** and **simulated presence therapy** — for a population Western apps don't serve: Urdu-speaking joint families, voice-first, dialect-aware.
@@ -83,3 +140,5 @@ Requires Flutter 3.22+, an Android device/emulator, and (for building) JDK 11
 Hackathon build. Elder + caregiver flows, flashback NLP, safe zone, and the
 "if found" card are implemented and the NLP is unit-tested. Background
 geofencing is foreground-checked with an honest "simulate leaving" demo aid.
+
+The Yaadain 2 designs above are complete and are being built into the app.

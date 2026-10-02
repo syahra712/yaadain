@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Flow Map</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width:1600px;height:1000px;position:relative;overflow:hidden;background:#F3EBDC;color:#2C2620;font-family:'Nunito',sans-serif;">
+
+  <!-- Header band -->
+  <div style="position:absolute;top:0;left:0;right:0;height:92px;background:#124C3E;overflow:hidden;">
+    <svg width="1600" height="92" style="position:absolute;inset:0;" aria-hidden="true">
+      <defs>
+        <pattern id="jaaliFlow" width="44" height="44" patternUnits="userSpaceOnUse">
+          <g fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1.2">
+            <rect x="12" y="12" width="20" height="20"/>
+            <path d="M22 7.9L36.1 22 22 36.1 7.9 22z"/>
+            <path d="M0 22h7.9M36.1 22H44M22 0v7.9M22 36.1V44"/>
+          </g>
+        </pattern>
+        <linearGradient id="flowFade" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#FFFFFF" stop-opacity="1"/>
+          <stop offset="0.55" stop-color="#FFFFFF" stop-opacity="0.35"/>
+          <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+        </linearGradient>
+        <mask id="flowMask"><rect width="1600" height="92" fill="url(#flowFade)"/></mask>
+      </defs>
+      <rect width="1600" height="92" fill="url(#jaaliFlow)" mask="url(#flowMask)"/>
+    </svg>
+    <div style="position:absolute;top:0;bottom:0;left:28px;right:28px;display:flex;align-items:center;justify-content:space-between;gap:24px;color:#FFFFFF;">
+      <div style="display:flex;align-items:center;gap:16px;min-width:0;">
+        <svg width="52" height="52" viewBox="0 0 100 100" aria-hidden="true" style="flex:none;"><path d="M24 24H76V76H24Z" fill="#FFFFFF"/><path d="M50 13.2L86.8 50 50 86.8 13.2 50Z" fill="#FFFFFF"/><circle cx="50" cy="50" r="15" fill="#124C3E"/><circle cx="50" cy="50" r="8" fill="#C7743A"/></svg>
+        <div style="min-width:0;">
+          <div style="display:flex;align-items:baseline;gap:14px;">
+            <span style="font-family:'Fraunces',serif;font-size:30px;font-weight:600;line-height:1;">Yaadain</span>
+            <span style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,0.72);">Product flow map</span>
+          </div>
+          <div style="margin-top:8px;font-size:14px;line-height:1.35;color:rgba(255,255,255,0.9);max-width:760px;">Answers the questions Dada Jaan asks all day, in his family's own voices, and lets his family look after him from anywhere without ever making him feel watched. One app, three phones, never two scripts on one screen.</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex:none;">
+        <div style="display:flex;align-items:center;gap:8px;"><span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#1F6F5C;flex:none;"></span>Elder phone</span><span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#E9E1EC;color:#55406A;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#55406A;flex:none;"></span>Caregiver: Bilal</span><span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#E3E8D6;color:#475326;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#5E6E33;flex:none;"></span>Family: Fatima</span><span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#EFE9DE;color:#4A4036;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#857A68;flex:none;"></span>Sync, owner-managed Firebase</span><span style="width:1px;height:18px;background:rgba(255,255,255,0.35);display:inline-block;margin:0 2px;"></span><span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span><span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#F6E3D3;color:#9E5626;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;border:1px dashed #9E5626;">Demo mode</span></div>
+        <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.78);">Demo day: Friday 2 October 2026, Karachi. Family code YD-7F3K. Offline-first; Firebase sync of members, voices, safe zone and alerts is owner-managed.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Three devices -->
+  <div style="position:absolute;top:108px;left:28px;right:28px;height:124px;display:flex;gap:16px;">
+    
+    <div style="flex:1 1 0;min-width:0;height:124px;background:#FFFFFF;border:1px solid #E6DECF;border-top:4px solid #1F6F5C;border-radius:20px;padding:12px 18px;display:flex;gap:14px;box-sizing:border-box;">
+      <div style="width:44px;height:44px;border-radius:999px;background:#DCEBE5;color:#124C3E;display:flex;align-items:center;justify-content:center;flex:none;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></div>
+      <div style="min-width:0;display:flex;flex-direction:column;gap:3px;">
+        <div style="display:flex;align-items:baseline;gap:10px;min-width:0;">
+          <span style="font-family:'Fraunces',serif;font-size:21px;font-weight:600;color:#2C2620;line-height:1.1;white-space:nowrap;">Elder phone</span>
+          <span style="font-size:12px;font-weight:800;color:#124C3E;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Urdu or Roman Urdu, set by the caregiver</span>
+        </div>
+        <div style="font-size:13px;font-weight:700;color:#6B5F4D;line-height:1.3;">Dada Jaan, Muhammad Akram, 78. Set up by Bilal, never by him.</div>
+        <div style="font-size:12px;line-height:1.38;color:#4A4036;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">Day, place, who is home, next prayer. Family by generation, who is this, patient answers, calm audio, evening and night modes, one help button, an if-found card for strangers.</div>
+      </div>
+    </div>
+    <div style="flex:1 1 0;min-width:0;height:124px;background:#FFFFFF;border:1px solid #E6DECF;border-top:4px solid #55406A;border-radius:20px;padding:12px 18px;display:flex;gap:14px;box-sizing:border-box;">
+      <div style="width:44px;height:44px;border-radius:999px;background:#E9E1EC;color:#55406A;display:flex;align-items:center;justify-content:center;flex:none;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6z"/></svg></div>
+      <div style="min-width:0;display:flex;flex-direction:column;gap:3px;">
+        <div style="display:flex;align-items:baseline;gap:10px;min-width:0;">
+          <span style="font-family:'Fraunces',serif;font-size:21px;font-weight:600;color:#2C2620;line-height:1.1;white-space:nowrap;">Caregiver</span>
+          <span style="font-size:12px;font-weight:800;color:#55406A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">English</span>
+        </div>
+        <div style="font-size:13px;font-weight:700;color:#6B5F4D;line-height:1.3;">Bilal, his son. Lives with him; caregiver flag on his phone.</div>
+        <div style="font-size:12px;line-height:1.38;color:#4A4036;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">Elder phone setup, relatives with kinship and voice, answers, routine, safe zones. Where is Abu, alerts and I&#x27;m on my way, Find Abu pack, weekly report, care circle.</div>
+      </div>
+    </div>
+    <div style="flex:1 1 0;min-width:0;height:124px;background:#FFFFFF;border:1px solid #E6DECF;border-top:4px solid #5E6E33;border-radius:20px;padding:12px 18px;display:flex;gap:14px;box-sizing:border-box;">
+      <div style="width:44px;height:44px;border-radius:999px;background:#E3E8D6;color:#475326;display:flex;align-items:center;justify-content:center;flex:none;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.6"/><path d="M15.5 14.2a5 5 0 0 1 5.5 5.8"/></svg></div>
+      <div style="min-width:0;display:flex;flex-direction:column;gap:3px;">
+        <div style="display:flex;align-items:baseline;gap:10px;min-width:0;">
+          <span style="font-family:'Fraunces',serif;font-size:21px;font-weight:600;color:#2C2620;line-height:1.1;white-space:nowrap;">Family</span>
+          <span style="font-size:12px;font-weight:800;color:#475326;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">English</span>
+        </div>
+        <div style="font-size:13px;font-weight:700;color:#6B5F4D;line-height:1.3;">Fatima in Lahore, Ayesha, Aslam, Naseem. Joins with YD-7F3K.</div>
+        <div style="font-size:12px;line-height:1.38;color:#4A4036;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">Status by permission, record a hello, add a memory, I&#x27;ll call him on an alert, take a shift, handoff note. Nothing here says track.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Flow lanes -->
+  
+  <div style="position:absolute;top:248px;left:28px;right:28px;height:138px;background:rgba(255,255,255,0.42);border-radius:16px;display:flex;align-items:center;gap:10px;padding:0 8px;box-sizing:border-box;">
+    <div style="width:146px;flex:none;align-self:stretch;display:flex;flex-direction:column;justify-content:center;padding:0 12px 0 4px;border-right:1px solid #E6DECF;">
+      <div style="font-family:'Nunito',sans-serif;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#B88A3E;">Flow 1</div>
+      <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:#124C3E;line-height:1.12;margin-top:2px;">Setup</div>
+      <div style="font-size:12px;line-height:1.35;color:#6B5F4D;margin-top:6px;">Bilal holds his father&#x27;s phone, then his own. About fifteen minutes on day one.</div>
+    </div>
+    
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px solid #E6DECF;border-left:4px solid #1F6F5C;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">1</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">Splash and roles</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Who will use this phone? Bilal: the elder&#x27;s phone.</div>
+        <div style="flex:1;"></div>
+        <div style="font-size:12px;font-weight:700;line-height:1.3;color:#6B5F4D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Bilal holds it; English</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#1F6F5C;flex:none;"></span>Elder phone</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span>
+        </div>
+      </div><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="flex:none;"><path d="M1 8h15" stroke="#857A68" stroke-width="2" stroke-linecap="round"/><path d="M14 3l6 5-6 5" fill="none" stroke="#857A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px solid #E6DECF;border-left:4px solid #1F6F5C;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">2</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">Set up his phone</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Urdu name, home address, Urdu or Roman Urdu.</div>
+        <div style="flex:1;"></div>
+        <div style="font-size:12px;font-weight:700;line-height:1.3;color:#6B5F4D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Bilal holds it</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#1F6F5C;flex:none;"></span>Elder phone</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span>
+        </div>
+      </div><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="flex:none;"><path d="M1 8h15" stroke="#857A68" stroke-width="2" stroke-linecap="round"/><path d="M14 3l6 5-6 5" fill="none" stroke="#857A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px solid #E6DECF;border-left:4px solid #1F6F5C;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">3</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">Permissions</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Location, mic, notifications, with plain reasons.</div>
+        <div style="flex:1;"></div>
+        <div style="font-size:12px;font-weight:700;line-height:1.3;color:#6B5F4D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Bilal holds it</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#1F6F5C;flex:none;"></span>Elder phone</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span>
+        </div>
+      </div><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="flex:none;"><path d="M1 8h15" stroke="#857A68" stroke-width="2" stroke-linecap="round"/><path d="M14 3l6 5-6 5" fill="none" stroke="#857A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px solid #E6DECF;border-left:4px solid #1F6F5C;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">4</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">Khayal: consent</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Urdu, Bilal&#x27;s photo. A big Yes, or Not now.</div>
+        <div style="flex:1;"></div>
+        <div style="font-size:12px;font-weight:700;line-height:1.3;color:#6B5F4D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Now in Dada Jaan&#x27;s hands</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#1F6F5C;flex:none;"></span>Elder phone</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span>
+        </div>
+      </div><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="flex:none;"><path d="M1 8h15" stroke="#857A68" stroke-width="2" stroke-linecap="round"/><path d="M14 3l6 5-6 5" fill="none" stroke="#857A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px solid #E6DECF;border-left:4px solid #1F6F5C;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">5</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">Consent recorded</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">What he agreed, when, who was there, review date.</div>
+        <div style="flex:1;"></div>
+        <div style="font-size:12px;font-weight:700;line-height:1.3;color:#6B5F4D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Local; synced by owner</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#1F6F5C;flex:none;"></span>Elder phone</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span>
+        </div>
+      </div><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="flex:none;"><path d="M1 8h15" stroke="#857A68" stroke-width="2" stroke-linecap="round"/><path d="M14 3l6 5-6 5" fill="none" stroke="#857A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px solid #E6DECF;border-left:4px solid #55406A;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">6</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">Join the family</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Bilal joins as caregiver; Fatima with YD-7F3K.</div>
+        <div style="flex:1;"></div>
+        <div style="font-size:12px;font-weight:700;line-height:1.3;color:#6B5F4D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Scan QR: demo</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#E9E1EC;color:#55406A;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#55406A;flex:none;"></span>Bilal</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span>
+        </div>
+      </div>
+  </div>
+  <div style="position:absolute;top:392px;left:28px;right:28px;height:138px;background:transparent;border-radius:16px;display:flex;align-items:center;gap:10px;padding:0 8px;box-sizing:border-box;">
+    <div style="width:146px;flex:none;align-self:stretch;display:flex;flex-direction:column;justify-content:center;padding:0 12px 0 4px;border-right:1px solid #E6DECF;">
+      <div style="font-family:'Nunito',sans-serif;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#B88A3E;">Flow 2</div>
+      <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:#124C3E;line-height:1.12;margin-top:2px;">Daily use</div>
+      <div style="font-size:12px;line-height:1.35;color:#6B5F4D;margin-top:6px;">Dada Jaan, all day, in Urdu. Nothing to configure, nothing is a quiz.</div>
+    </div>
+    
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px solid #E6DECF;border-left:4px solid #1F6F5C;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">1</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">Main, morning</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Day, date, you are home, who is home, Zuhr 12:25.</div>
+        <div style="flex:1;"></div>
+        <div style="font-size:12px;font-weight:700;line-height:1.3;color:#6B5F4D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Who is home: demo</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#1F6F5C;flex:none;"></span>Elder phone</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span>
+        </div>
+      </div><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="flex:none;"><path d="M1 8h15" stroke="#857A68" stroke-width="2" stroke-linecap="round"/><path d="M14 3l6 5-6 5" fill="none" stroke="#857A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px solid #E6DECF;border-left:4px solid #1F6F5C;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">2</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">Who is this?</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">Nine faces. Tap Maryam: This is Maryam, your granddaughter, her voice.</div>
+        <div style="flex:1;"></div>
+        
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#1F6F5C;flex:none;"></span>Elder phone</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span>
+        </div>
+      </div><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="flex:none;"><path d="M1 8h15" stroke="#857A68" stroke-width="2" stroke-linecap="round"/><path d="M14 3l6 5-6 5" fill="none" stroke="#857A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px solid #E6DECF;border-left:4px solid #1F6F5C;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">3</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">Poochhein: ask</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">Six questions. One press, Bilal&#x27;s recorded answer, as often as he likes.</div>
+        <div style="flex:1;"></div>
+        
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#1F6F5C;flex:none;"></span>Elder phone</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span>
+        </div>
+      </div><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="flex:none;"><path d="M1 8h15" stroke="#857A68" stroke-width="2" stroke-linecap="round"/><path d="M14 3l6 5-6 5" fill="none" stroke="#857A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px solid #E6DECF;border-left:4px solid #1F6F5C;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">4</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">Routine prompt</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Bilal&#x27;s voice, pill photo. Taken, or Later once.</div>
+        <div style="flex:1;"></div>
+        <div style="font-size:12px;font-weight:700;line-height:1.3;color:#6B5F4D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Offline on his phone</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#1F6F5C;flex:none;"></span>Elder phone</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span>
+        </div>
+      </div><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="flex:none;"><path d="M1 8h15" stroke="#857A68" stroke-width="2" stroke-linecap="round"/><path d="M14 3l6 5-6 5" fill="none" stroke="#857A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px solid #E6DECF;border-left:4px solid #1F6F5C;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">5</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">Evening home</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Warmer, larger type, three tiles. Calm first.</div>
+        <div style="flex:1;"></div>
+        <div style="font-size:12px;font-weight:700;line-height:1.3;color:#6B5F4D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">From Asr: sundowning</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#1F6F5C;flex:none;"></span>Elder phone</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span>
+        </div>
+      </div><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="flex:none;"><path d="M1 8h15" stroke="#857A68" stroke-width="2" stroke-linecap="round"/><path d="M14 3l6 5-6 5" fill="none" stroke="#857A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px solid #E6DECF;border-left:4px solid #1F6F5C;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">6</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">Night anchor</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">A dark screen after Isha: It is 2 at night, everyone is asleep, you are home.</div>
+        <div style="flex:1;"></div>
+        
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#1F6F5C;flex:none;"></span>Elder phone</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span>
+        </div>
+      </div>
+  </div>
+  <div style="position:absolute;top:536px;left:28px;right:28px;height:138px;background:rgba(255,255,255,0.42);border-radius:16px;display:flex;align-items:center;gap:10px;padding:0 8px;box-sizing:border-box;">
+    <div style="width:146px;flex:none;align-self:stretch;display:flex;flex-direction:column;justify-content:center;padding:0 12px 0 4px;border-right:1px solid #E6DECF;">
+      <div style="font-family:'Nunito',sans-serif;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#B88A3E;">Flow 3</div>
+      <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:#124C3E;line-height:1.12;margin-top:2px;">Lost <svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin:0 2px;"><path d="M1 6h13" stroke="#124C3E" stroke-width="2" stroke-linecap="round"/><path d="M10 2l4 4-4 4" fill="none" stroke="#124C3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> found</div>
+      <div style="font-size:12px;line-height:1.35;color:#6B5F4D;margin-top:6px;">His phone, a stranger on the street, and Bilal. Calm, no alarm sound.</div>
+    </div>
+    
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px solid #E6DECF;border-left:4px solid #1F6F5C;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">1</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">He leaves the zone</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">He crosses the 150 m home circle, or taps I need help on Main.</div>
+        <div style="flex:1;"></div>
+        <div style="font-size:12px;font-weight:700;line-height:1.3;color:#6B5F4D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Help flag to family: demo</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#1F6F5C;flex:none;"></span>Elder phone</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span>
+        </div>
+      </div><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="flex:none;"><path d="M1 8h15" stroke="#857A68" stroke-width="2" stroke-linecap="round"/><path d="M14 3l6 5-6 5" fill="none" stroke="#857A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px solid #E6DECF;border-left:4px solid #1F6F5C;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">2</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">Madad: help</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">You are outside. Don&#x27;t worry, Bilal has been told. Address, Call Bilal, Show this to someone, I&#x27;m fine.</div>
+        <div style="flex:1;"></div>
+        
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#1F6F5C;flex:none;"></span>Elder phone</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span>
+        </div>
+      </div><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="flex:none;"><path d="M1 8h15" stroke="#857A68" stroke-width="2" stroke-linecap="round"/><path d="M14 3l6 5-6 5" fill="none" stroke="#857A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px solid #E6DECF;border-left:4px solid #1F6F5C;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">3</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">If-found card</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">For a stranger: his name, age, illness, Call his son Bilal in one tap.</div>
+        <div style="flex:1;"></div>
+        <div style="font-size:12px;font-weight:700;line-height:1.3;color:#6B5F4D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Urdu or English, never both</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#1F6F5C;flex:none;"></span>Elder phone</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span>
+        </div>
+      </div><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="flex:none;"><path d="M1 8h15" stroke="#857A68" stroke-width="2" stroke-linecap="round"/><path d="M14 3l6 5-6 5" fill="none" stroke="#857A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px dashed #857A68;border-left:4px solid #1F6F5C;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">4</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">Bilal is coming</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Flow 4, step 3 sends it: Bilal&#x27;s face, ten minutes, stay where you are.</div>
+        <div style="flex:1;"></div>
+        <div style="font-size:12px;font-weight:700;line-height:1.3;color:#6B5F4D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Test button in demo controls</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#1F6F5C;flex:none;"></span>Elder phone</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#F6E3D3;color:#9E5626;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;border:1px dashed #9E5626;">Demo mode</span>
+        </div>
+      </div><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="flex:none;"><path d="M1 8h15" stroke="#857A68" stroke-width="2" stroke-linecap="round"/><path d="M14 3l6 5-6 5" fill="none" stroke="#857A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px solid #E6DECF;border-left:4px solid #1F6F5C;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">5</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">Home again</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">Back inside the circle: You are at home. You are safe. A minute later, Main, or Calm in the evening.</div>
+        <div style="flex:1;"></div>
+        
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#1F6F5C;flex:none;"></span>Elder phone</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span>
+        </div>
+      </div>
+  </div>
+  <div style="position:absolute;top:680px;left:28px;right:28px;height:138px;background:transparent;border-radius:16px;display:flex;align-items:center;gap:10px;padding:0 8px;box-sizing:border-box;">
+    <div style="width:146px;flex:none;align-self:stretch;display:flex;flex-direction:column;justify-content:center;padding:0 12px 0 4px;border-right:1px solid #E6DECF;">
+      <div style="font-family:'Nunito',sans-serif;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#B88A3E;">Flow 4</div>
+      <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:#124C3E;line-height:1.12;margin-top:2px;">Family tracking</div>
+      <div style="font-size:12px;line-height:1.35;color:#6B5F4D;margin-top:6px;">Alert, then on my way. Bilal&#x27;s phone; Fatima sees a permission-limited view.</div>
+    </div>
+    
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px solid #E6DECF;border-left:4px solid #55406A;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">1</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">Where is Abu</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">At home since 7:10. Zones, radar ring, no trail.</div>
+        <div style="flex:1;"></div>
+        <div style="font-size:12px;font-weight:700;line-height:1.3;color:#6B5F4D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Battery, last seen: demo</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#E9E1EC;color:#55406A;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#55406A;flex:none;"></span>Bilal</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span>
+        </div>
+      </div><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="flex:none;"><path d="M1 8h15" stroke="#857A68" stroke-width="2" stroke-linecap="round"/><path d="M14 3l6 5-6 5" fill="none" stroke="#857A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px solid #E6DECF;border-left:4px solid #55406A;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">2</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">Alert detail</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Left home 10:20, unusual time, 320 m north-east.</div>
+        <div style="flex:1;"></div>
+        <div style="font-size:12px;font-weight:700;line-height:1.3;color:#6B5F4D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Distance: demo</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#E9E1EC;color:#55406A;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#55406A;flex:none;"></span>Bilal</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span>
+        </div>
+      </div><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="flex:none;"><path d="M1 8h15" stroke="#857A68" stroke-width="2" stroke-linecap="round"/><path d="M14 3l6 5-6 5" fill="none" stroke="#857A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px dashed #857A68;border-left:4px solid #55406A;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">3</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">I&#x27;m on my way</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Acknowledges, sends Bilal is coming to him.</div>
+        <div style="flex:1;"></div>
+        <div style="font-size:12px;font-weight:700;line-height:1.3;color:#6B5F4D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Owner wires cross-device</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#E9E1EC;color:#55406A;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#55406A;flex:none;"></span>Bilal</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#F6E3D3;color:#9E5626;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;border:1px dashed #9E5626;">Demo mode</span>
+        </div>
+      </div><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="flex:none;"><path d="M1 8h15" stroke="#857A68" stroke-width="2" stroke-linecap="round"/><path d="M14 3l6 5-6 5" fill="none" stroke="#857A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px dashed #857A68;border-left:4px solid #5E6E33;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">4</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">I&#x27;ll call him</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">Fatima sees the alert; Bilal is on his way. Her tap tells him it is handled.</div>
+        <div style="flex:1;"></div>
+        
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#E3E8D6;color:#475326;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#5E6E33;flex:none;"></span>Fatima</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#F6E3D3;color:#9E5626;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;border:1px dashed #9E5626;">Demo mode</span>
+        </div>
+      </div><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="flex:none;"><path d="M1 8h15" stroke="#857A68" stroke-width="2" stroke-linecap="round"/><path d="M14 3l6 5-6 5" fill="none" stroke="#857A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px dashed #857A68;border-left:4px solid #55406A;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">5</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">Find Abu pack</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Clothes, medicine, places. Police 15, Edhi 115.</div>
+        <div style="flex:1;"></div>
+        <div style="font-size:12px;font-weight:700;line-height:1.3;color:#6B5F4D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Share pack: live</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#E9E1EC;color:#55406A;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#55406A;flex:none;"></span>Bilal</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#F6E3D3;color:#9E5626;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;border:1px dashed #9E5626;">Demo mode</span>
+        </div>
+      </div><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="flex:none;"><path d="M1 8h15" stroke="#857A68" stroke-width="2" stroke-linecap="round"/><path d="M14 3l6 5-6 5" fill="none" stroke="#857A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px solid #E6DECF;border-left:4px solid #55406A;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">6</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">Back home, report</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Back home 10:41. The week in plain words.</div>
+        <div style="flex:1;"></div>
+        <div style="font-size:12px;font-weight:700;line-height:1.3;color:#6B5F4D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Report seeded: demo</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#E9E1EC;color:#55406A;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#55406A;flex:none;"></span>Bilal</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span>
+        </div>
+      </div>
+  </div>
+  <div style="position:absolute;top:824px;left:28px;right:28px;height:138px;background:rgba(255,255,255,0.42);border-radius:16px;display:flex;align-items:center;gap:10px;padding:0 8px;box-sizing:border-box;">
+    <div style="width:146px;flex:none;align-self:stretch;display:flex;flex-direction:column;justify-content:center;padding:0 12px 0 4px;border-right:1px solid #E6DECF;">
+      <div style="font-family:'Nunito',sans-serif;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#B88A3E;">Flow 5</div>
+      <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:#124C3E;line-height:1.12;margin-top:2px;">Voice contribution</div>
+      <div style="font-size:12px;line-height:1.35;color:#6B5F4D;margin-top:6px;">Fatima from Lahore, in under a minute. Bilal adds relatives and answers.</div>
+    </div>
+    
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px solid #E6DECF;border-left:4px solid #5E6E33;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">1</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">Family home</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">Fatima glances at his status, then the one primary action: Record a hello.</div>
+        <div style="flex:1;"></div>
+        
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#E3E8D6;color:#475326;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#5E6E33;flex:none;"></span>Fatima</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span>
+        </div>
+      </div><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="flex:none;"><path d="M1 8h15" stroke="#857A68" stroke-width="2" stroke-linecap="round"/><path d="M14 3l6 5-6 5" fill="none" stroke="#857A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px solid #E6DECF;border-left:4px solid #5E6E33;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">2</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">Record a hello</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Your name and how you are related. Play, Send.</div>
+        <div style="flex:1;"></div>
+        <div style="font-size:12px;font-weight:700;line-height:1.3;color:#6B5F4D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Under 40 s, 700 KB cap</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#E3E8D6;color:#475326;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#5E6E33;flex:none;"></span>Fatima</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span>
+        </div>
+      </div><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="flex:none;"><path d="M1 8h15" stroke="#857A68" stroke-width="2" stroke-linecap="round"/><path d="M14 3l6 5-6 5" fill="none" stroke="#857A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px solid #E6DECF;border-left:4px solid #857A68;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">3</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">Syncs as a story</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Audio rides on her member entry, offline-first.</div>
+        <div style="flex:1;"></div>
+        <div style="font-size:12px;font-weight:700;line-height:1.3;color:#6B5F4D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Existing collections</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#EFE9DE;color:#4A4036;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#857A68;flex:none;"></span>Sync</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span>
+        </div>
+      </div><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="flex:none;"><path d="M1 8h15" stroke="#857A68" stroke-width="2" stroke-linecap="round"/><path d="M14 3l6 5-6 5" fill="none" stroke="#857A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px solid #E6DECF;border-left:4px solid #1F6F5C;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">4</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">New voice tile</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">Main shows New voice: Fatima. Voices lists every hello, newest first.</div>
+        <div style="flex:1;"></div>
+        
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#1F6F5C;flex:none;"></span>Elder phone</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span>
+        </div>
+      </div><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="flex:none;"><path d="M1 8h15" stroke="#857A68" stroke-width="2" stroke-linecap="round"/><path d="M14 3l6 5-6 5" fill="none" stroke="#857A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px solid #E6DECF;border-left:4px solid #1F6F5C;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">5</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">Her face, her voice</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">From now on, tapping Fatima in Who is this or My family plays her.</div>
+        <div style="flex:1;"></div>
+        
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#1F6F5C;flex:none;"></span>Elder phone</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span>
+        </div>
+      </div><svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" style="flex:none;"><path d="M1 8h15" stroke="#857A68" stroke-width="2" stroke-linecap="round"/><path d="M14 3l6 5-6 5" fill="none" stroke="#857A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="flex:1 1 0;min-width:0;height:126px;background:#FFFFFF;border:1px solid #E6DECF;border-left:4px solid #55406A;border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:8px;min-width:0;">
+          <span style="width:22px;height:22px;border-radius:999px;background:#124C3E;color:#FFFFFF;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;">6</span>
+          <span style="font-size:14px;font-weight:800;color:#2C2620;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">Add relative</span>
+        </div>
+        <div style="font-size:12px;line-height:1.35;color:#4A4036;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Maryam: Urdu name, exact kinship, a hello.</div>
+        <div style="flex:1;"></div>
+        <div style="font-size:12px;font-weight:700;line-height:1.3;color:#6B5F4D;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Nicknames sync: demo</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;">
+          <span style="display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 8px 0 6px;border-radius:999px;background:#E9E1EC;color:#55406A;font-size:12px;font-weight:800;white-space:nowrap;flex:none;"><span style="width:7px;height:7px;border-radius:999px;background:#55406A;flex:none;"></span>Bilal</span>
+          <span style="display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:#DCEBE5;color:#124C3E;font-size:12px;font-weight:800;letter-spacing:.02em;white-space:nowrap;box-sizing:border-box;flex:none;">Live</span>
+        </div>
+      </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1600,"height":1000}}'>class Component extends DCLogic { renderVals(){ return {}; } }</script>
+</body>
+</html>
