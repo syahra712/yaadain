@@ -33,6 +33,7 @@ class MemoryStory {
         title: (j['title'] ?? '') as String,
         audioPath: j['audioPath'] as String?,
         photoPath: j['photoPath'] as String?,
-        triggers: ((j['triggers'] ?? []) as List).map((e) => e.toString()).toList(),
+        triggers:
+            ((j['triggers'] ?? []) as List).map((e) => e.toString()).toList(),
       );
 }

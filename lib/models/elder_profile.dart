@@ -8,6 +8,12 @@ class ElderProfile {
   String? romanName;
   String? photoPath;
 
+  // Legal name and age, shown to a stranger on the if-found card.
+  String? fullNameEn;
+  String? fullNameUr;
+  int? ageYears;
+  String? homeAddressUr;
+
   // Safe zone (optional). Event-based only: we compare current position to
   // this circle to decide if the elder has left. We never log a track.
   double? homeLat;
@@ -32,6 +38,10 @@ class ElderProfile {
     this.name = '',
     this.romanName,
     this.photoPath,
+    this.fullNameEn,
+    this.fullNameUr,
+    this.ageYears,
+    this.homeAddressUr,
     this.homeLat,
     this.homeLng,
     this.safeRadiusMeters = 300,
@@ -48,6 +58,10 @@ class ElderProfile {
         'name': name,
         'romanName': romanName,
         'photoPath': photoPath,
+        'fullNameEn': fullNameEn,
+        'fullNameUr': fullNameUr,
+        'ageYears': ageYears,
+        'homeAddressUr': homeAddressUr,
         'homeLat': homeLat,
         'homeLng': homeLng,
         'safeRadiusMeters': safeRadiusMeters,
@@ -62,6 +76,10 @@ class ElderProfile {
         name: (j['name'] ?? '') as String,
         romanName: j['romanName'] as String?,
         photoPath: j['photoPath'] as String?,
+        fullNameEn: j['fullNameEn'] as String?,
+        fullNameUr: j['fullNameUr'] as String?,
+        ageYears: (j['ageYears'] as num?)?.toInt(),
+        homeAddressUr: j['homeAddressUr'] as String?,
         homeLat: (j['homeLat'] as num?)?.toDouble(),
         homeLng: (j['homeLng'] as num?)?.toDouble(),
         safeRadiusMeters: ((j['safeRadiusMeters'] ?? 300) as num).toDouble(),

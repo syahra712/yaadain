@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
+    <path android:fillColor="#124C3E" android:pathData="M0,0h108v108h-108z"/>
+    <group android:translateX="-8" android:translateY="-8"><path android:strokeColor="#17FFFFFF" android:strokeWidth="1.2" android:pathData="M12,12 h20 v20 h-20 Z M22,7.9 L36.1,22 L22,36.1 L7.9,22 Z M0,22 h7.9 M36.1,22 H44 M22,0 v7.9 M22,36.1 V44"/></group>
+    <group android:translateX="-8" android:translateY="36"><path android:strokeColor="#17FFFFFF" android:strokeWidth="1.2" android:pathData="M12,12 h20 v20 h-20 Z M22,7.9 L36.1,22 L22,36.1 L7.9,22 Z M0,22 h7.9 M36.1,22 H44 M22,0 v7.9 M22,36.1 V44"/></group>
+    <group android:translateX="-8" android:translateY="80"><path android:strokeColor="#17FFFFFF" android:strokeWidth="1.2" android:pathData="M12,12 h20 v20 h-20 Z M22,7.9 L36.1,22 L22,36.1 L7.9,22 Z M0,22 h7.9 M36.1,22 H44 M22,0 v7.9 M22,36.1 V44"/></group>
+    <group android:translateX="36" android:translateY="-8"><path android:strokeColor="#17FFFFFF" android:strokeWidth="1.2" android:pathData="M12,12 h20 v20 h-20 Z M22,7.9 L36.1,22 L22,36.1 L7.9,22 Z M0,22 h7.9 M36.1,22 H44 M22,0 v7.9 M22,36.1 V44"/></group>
+    <group android:translateX="36" android:translateY="36"><path android:strokeColor="#17FFFFFF" android:strokeWidth="1.2" android:pathData="M12,12 h20 v20 h-20 Z M22,7.9 L36.1,22 L22,36.1 L7.9,22 Z M0,22 h7.9 M36.1,22 H44 M22,0 v7.9 M22,36.1 V44"/></group>
+    <group android:translateX="36" android:translateY="80"><path android:strokeColor="#17FFFFFF" android:strokeWidth="1.2" android:pathData="M12,12 h20 v20 h-20 Z M22,7.9 L36.1,22 L22,36.1 L7.9,22 Z M0,22 h7.9 M36.1,22 H44 M22,0 v7.9 M22,36.1 V44"/></group>
+    <group android:translateX="80" android:translateY="-8"><path android:strokeColor="#17FFFFFF" android:strokeWidth="1.2" android:pathData="M12,12 h20 v20 h-20 Z M22,7.9 L36.1,22 L22,36.1 L7.9,22 Z M0,22 h7.9 M36.1,22 H44 M22,0 v7.9 M22,36.1 V44"/></group>
+    <group android:translateX="80" android:translateY="36"><path android:strokeColor="#17FFFFFF" android:strokeWidth="1.2" android:pathData="M12,12 h20 v20 h-20 Z M22,7.9 L36.1,22 L22,36.1 L7.9,22 Z M0,22 h7.9 M36.1,22 H44 M22,0 v7.9 M22,36.1 V44"/></group>
+    <group android:translateX="80" android:translateY="80"><path android:strokeColor="#17FFFFFF" android:strokeWidth="1.2" android:pathData="M12,12 h20 v20 h-20 Z M22,7.9 L36.1,22 L22,36.1 L7.9,22 Z M0,22 h7.9 M36.1,22 H44 M22,0 v7.9 M22,36.1 V44"/></group>
+</vector>

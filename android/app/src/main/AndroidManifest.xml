@@ -2,6 +2,7 @@
     <!-- Yaadain runtime permissions: record family voices, capture photos,
          and check the safe zone. Location is coarse+fine but event-based only;
          no background/always location is requested. -->
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>

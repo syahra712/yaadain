@@ -1,351 +1,214 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../models/elder_profile.dart';
+import '../../design/design.dart';
 import '../../models/family_member.dart';
-import '../../models/relationship.dart';
+import '../../routes.dart';
 import '../../state/app_state.dart';
-import '../../theme.dart';
-import '../../widgets/elder_scaffold.dart';
-import '../../widgets/ui.dart';
-import 'member_detail_screen.dart';
+import 'widgets/elder_b_widgets.dart';
 
-/// The family register — a printed keepsake page, not a diagram.
-///
-/// The elder sits as a bookplate portrait at the head of the page; each
-/// generation follows as its own quiet chapter, set on a real grid with a
-/// gold hairline rule and small-caps captions. Nothing moves, nothing glows —
-/// the warmth comes from the photographs and the type, the way a family
-/// album earns it. The whole thing simply scrolls, so it never crowds no
-/// matter how large the family grows.
+/// میرا خاندان: the family by generation. Tap a face to open MemberDetail.
 class FamilyTreeScreen extends StatelessWidget {
   const FamilyTreeScreen({super.key});
+
+  static const _elders = {
+    'walid',
+    'walida',
+    'chacha',
+    'phupho',
+    'mamu',
+    'khala',
+    'taya',
+    'chachi',
+    'tai',
+    'mumani',
+    'khalu',
+    'phupha',
+    'dada',
+    'dadi',
+    'nana',
+    'nani',
+  };
+  static const _children = {'beta', 'beti', 'bahu', 'damaad'};
+  static const _grand = {'pota', 'poti', 'nawasa', 'nawasi'};
 
   @override
   Widget build(BuildContext context) {
     final app = context.watch<AppState>();
-    final roman = app.roman;
     final members = app.members;
-
-    final byGen = <int, List<FamilyMember>>{};
+    final peers = <FamilyMember>[];
+    final kids = <FamilyMember>[];
+    final grand = <FamilyMember>[];
+    final elders = <FamilyMember>[];
     for (final m in members) {
-      byGen.putIfAbsent(generationOfRelationship(m.relationshipId), () => []).add(m);
+      final r = m.relationshipId;
+      if (_children.contains(r)) {
+        kids.add(m);
+      } else if (_grand.contains(r)) {
+        grand.add(m);
+      } else if (_elders.contains(r)) {
+        elders.add(m);
+      } else {
+        peers.add(m);
+      }
     }
-    final levels = byGen.keys.toList()..sort((a, b) => a.compareTo(b)); // -1..+2
+
+    final sections = <Widget>[];
+    void add(String title, List<FamilyMember> list, {bool stacked = false}) {
+      if (list.isEmpty) return;
+      sections.add(Padding(
+        padding: EdgeInsets.only(top: sections.isEmpty ? 4 : 16, bottom: 8),
+        child: EbSectionTitle(title, stacked: stacked),
+      ));
+      sections.add(_Grid(list));
+    }
+
+    add('آپ کے ہم عمر', peers);
+    add('آپ کی اولاد', kids);
+    add('آپ کے پوتے پوتیاں اور نواسے نواسیاں', grand, stacked: true);
+    add('آپ کے بزرگ', elders);
 
     return ElderScaffold(
-      title: roman ? 'Mera khandan' : 'میرا خاندان',
-      roman: roman,
-      accent: YaadainTheme.foxed,
-      child: members.isEmpty
-          ? _EmptyState(roman: roman)
-          : Container(
-              color: YaadainTheme.paper,
-              child: ListView(
-                padding: const EdgeInsets.fromLTRB(0, 28, 0, 48),
-                children: [
-                  _Frontispiece(elder: app.elder, roman: roman, count: members.length),
-                  const SizedBox(height: 30),
-                  for (final level in levels) ...[
-                    _Chapter(
-                      level: level,
-                      members: byGen[level]!,
-                      roman: roman,
-                    ),
-                    const SizedBox(height: 30),
-                  ],
-                ],
-              ),
+      title: 'میرا خاندان',
+      body: members.isEmpty
+          ? const EbEmptyNote('ابھی کوئی نام شامل نہیں کیا گیا۔')
+          : Padding(
+              padding: const EdgeInsets.only(top: 4, bottom: 48),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: sections),
             ),
     );
   }
 }
 
-// ---------------------------------------------------------------------------
-// The frontispiece — the elder's own page, at the head of the record.
-// ---------------------------------------------------------------------------
-
-class _Frontispiece extends StatelessWidget {
-  final ElderProfile elder;
-  final bool roman;
-  final int count;
-  const _Frontispiece({required this.elder, required this.roman, required this.count});
+class _Grid extends StatelessWidget {
+  final List<FamilyMember> list;
+  const _Grid(this.list);
 
   @override
   Widget build(BuildContext context) {
-    final name = roman ? (elder.romanName ?? elder.name) : elder.name;
-    return Column(
-      children: [
-        _Medallion(
-          photoPath: elder.photoPath,
-          fallbackText: name.isNotEmpty ? name.characters.first : '🌿',
-          size: 128,
-          ringWidth: 3,
-          ring: YaadainTheme.leafRule,
+    final rows = <Widget>[];
+    final pairs = list.length ~/ 2;
+    for (var i = 0; i < pairs; i++) {
+      rows.add(IntrinsicHeight(
+        child: Row(
+          textDirection: TextDirection.rtl,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(child: _Tile(list[i * 2])),
+            const SizedBox(width: 12),
+            Expanded(child: _Tile(list[i * 2 + 1])),
+          ],
         ),
-        const SizedBox(height: 14),
-        Text(
-          name.isEmpty ? (roman ? 'Aap ka khandan' : 'آپ کا خاندان') : name,
-          textAlign: TextAlign.center,
-          style: YaadainTheme.serif(30, w: FontWeight.w600),
-        ),
-        const SizedBox(height: 6),
-        Text(
-          roman
-              ? '$count log is khandan mein'
-              : 'اس خاندان میں $count افراد',
-          style: TextStyle(fontSize: 14, color: YaadainTheme.foxed, letterSpacing: 0.3),
-        ),
-        const SizedBox(height: 18),
-        const _GoldRule(width: 84),
-      ],
-    );
-  }
-}
-
-// ---------------------------------------------------------------------------
-// A generation, presented as a chapter of the record.
-// ---------------------------------------------------------------------------
-
-class _Chapter extends StatelessWidget {
-  final int level;
-  final List<FamilyMember> members;
-  final bool roman;
-  const _Chapter({required this.level, required this.members, required this.roman});
-
-  ({String urdu, String roman}) get _label {
-    switch (level) {
-      case -1:
-        return (urdu: 'آپ کے بزرگ', roman: 'Aap ke buzurg');
-      case 1:
-        return (urdu: 'آپ کی اولاد', roman: 'Aap ki aulad');
-      case 2:
-        return (urdu: 'پوتے، نواسے', roman: 'Pote, nawase');
-      default:
-        return (urdu: 'آپ کے ہم عمر', roman: 'Aap ke ham-umar');
+      ));
     }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final lab = _label;
+    if (list.length.isOdd) rows.add(_WideTile(list.last));
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 28),
-          child: Center(
-            child: Text(
-              (roman ? lab.roman : lab.urdu).toUpperCase(),
-              textAlign: TextAlign.center,
-              style: YaadainTheme.eyebrow(),
-            ),
-          ),
-        ),
-        const SizedBox(height: 18),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 22),
-          child: _MemberGrid(members: members, roman: roman),
-        ),
+        for (var i = 0; i < rows.length; i++) ...[
+          if (i > 0) const SizedBox(height: 12),
+          rows[i],
+        ],
       ],
     );
   }
 }
 
-/// A real 3-column grid — every medallion the same size, evenly gapped, so
-/// the page reads as composed rather than scattered.
-class _MemberGrid extends StatelessWidget {
-  final List<FamilyMember> members;
-  final bool roman;
-  const _MemberGrid({required this.members, required this.roman});
+void _open(BuildContext context, FamilyMember m) =>
+    Navigator.pushNamed(context, Routes.memberDetail,
+        arguments: MemberDetailArgs(m.id));
+
+class _Tile extends StatelessWidget {
+  final FamilyMember m;
+  const _Tile(this.m);
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, box) {
-        const cols = 3;
-        const gap = 14.0;
-        final cell = (box.maxWidth - gap * (cols - 1)) / cols;
-        return Wrap(
-          spacing: gap,
-          runSpacing: 22,
-          children: [
-            for (final m in members)
-              SizedBox(
-                width: cell,
-                child: _EntryCard(member: m, roman: roman),
-              ),
-          ],
-        );
-      },
-    );
-  }
-}
-
-class _EntryCard extends StatelessWidget {
-  final FamilyMember member;
-  final bool roman;
-  const _EntryCard({required this.member, required this.roman});
-
-  @override
-  Widget build(BuildContext context) {
-    final rel = relationshipById(member.relationshipId);
-    final relLabel = rel == null ? '' : (roman ? rel.roman : rel.urdu);
-    final name = roman ? (member.romanName ?? member.name) : member.name;
-    final deceased = member.isDeceased;
-    final hasVoice = member.greetingAudioPath != null;
-
-    return InkWell(
-      borderRadius: BorderRadius.circular(20),
-      onTap: () => Navigator.of(context).push(
-        MaterialPageRoute(builder: (_) => MemberDetailScreen(memberId: member.id)),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 6),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Stack(
-              clipBehavior: Clip.none,
-              alignment: Alignment.center,
+    final label =
+        hasOwnName(m) ? '${m.displayUr}، ${m.kinshipUrdu}' : m.displayUr;
+    return Semantics(
+      button: true,
+      label: label,
+      excludeSemantics: true,
+      child: Material(
+        color: YaadainTheme.surface,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(28),
+            side: const BorderSide(color: YaadainTheme.line)),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(28),
+          onTap: () => _open(context, m),
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                _Medallion(
-                  photoPath: member.photoPath,
-                  fallbackText: rel?.emoji ?? (member.name.isNotEmpty ? member.name.characters.first : '🧑'),
-                  size: 78,
-                  ring: deceased ? YaadainTheme.sepia : YaadainTheme.leafRule,
-                  ringWidth: deceased ? 2 : 2.4,
-                  desaturate: deceased,
-                ),
-                if (hasVoice)
-                  Positioned(
-                    right: -2,
-                    bottom: -2,
-                    child: Container(
-                      padding: const EdgeInsets.all(4),
-                      decoration: BoxDecoration(
-                        color: YaadainTheme.paper,
-                        shape: BoxShape.circle,
-                        border: Border.all(color: YaadainTheme.leafRule, width: 1.2),
-                      ),
-                      child: const Icon(Icons.volume_up, size: 11, color: YaadainTheme.primaryDark),
-                    ),
-                  ),
+                const SizedBox(height: 3),
+                Align(child: EbFace(m, size: 128, badge: true)),
+                const SizedBox(height: 4),
+                UrduText(m.displayUr,
+                    size: 28, height: 1.8, align: TextAlign.center),
+                if (hasOwnName(m))
+                  UrduText(m.kinshipUrdu,
+                      size: 24,
+                      height: 1.8,
+                      color: YaadainTheme.muted,
+                      align: TextAlign.center),
               ],
             ),
-            const SizedBox(height: 8),
-            Text(
-              name,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              textAlign: TextAlign.center,
-              style: YaadainTheme.serif(15.5, w: FontWeight.w600, h: 1.2),
-            ),
-            if (relLabel.isNotEmpty)
-              Padding(
-                padding: const EdgeInsets.only(top: 1),
-                child: Text(
-                  relLabel,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 11.5,
-                    fontStyle: FontStyle.italic,
-                    color: deceased ? YaadainTheme.sepia : YaadainTheme.foxed,
-                  ),
-                ),
-              ),
-          ],
+          ),
         ),
       ),
     );
   }
 }
 
-// ---------------------------------------------------------------------------
-// Shared bits
-// ---------------------------------------------------------------------------
-
-/// A circular portrait set like a locket — thin ring, soft paper backing.
-/// Falls back to an emoji/initial so nothing ever shows a broken frame.
-class _Medallion extends StatelessWidget {
-  final String? photoPath;
-  final String fallbackText;
-  final double size;
-  final Color ring;
-  final double ringWidth;
-  final bool desaturate;
-  const _Medallion({
-    required this.photoPath,
-    required this.fallbackText,
-    required this.size,
-    required this.ring,
-    this.ringWidth = 2.4,
-    this.desaturate = false,
-  });
+class _WideTile extends StatelessWidget {
+  final FamilyMember m;
+  const _WideTile(this.m);
 
   @override
   Widget build(BuildContext context) {
-    final hasPhoto = photoPath != null && File(photoPath!).existsSync();
-    Widget img = hasPhoto
-        ? Image.file(File(photoPath!), fit: BoxFit.cover)
-        : Center(
-            child: Text(fallbackText, style: TextStyle(fontSize: size * 0.4)),
-          );
-    if (desaturate && hasPhoto) {
-      img = ColorFiltered(
-        colorFilter: const ColorFilter.matrix(<double>[
-          0.35, 0.45, 0.20, 0, 0, //
-          0.35, 0.45, 0.20, 0, 0, //
-          0.35, 0.45, 0.20, 0, 0, //
-          0, 0, 0, 1, 0,
-        ]),
-        child: img,
-      );
-    }
-    return Container(
-      width: size,
-      height: size,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
+    final label =
+        hasOwnName(m) ? '${m.displayUr}، ${m.kinshipUrdu}' : m.displayUr;
+    return Semantics(
+      button: true,
+      label: label,
+      excludeSemantics: true,
+      child: Material(
         color: YaadainTheme.surface,
-        border: Border.all(color: ring, width: ringWidth),
-        boxShadow: [
-          BoxShadow(color: Colors.black.withOpacity(0.10), blurRadius: 8, offset: const Offset(0, 3)),
-        ],
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(28),
+            side: const BorderSide(color: YaadainTheme.line)),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(28),
+          onTap: () => _open(context, m),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            child: Row(
+              textDirection: TextDirection.rtl,
+              children: [
+                EbFace(m, size: 128, badge: true),
+                const SizedBox(width: 20),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      UrduText(m.displayUr, size: 28, height: 1.8),
+                      if (hasOwnName(m))
+                        UrduText(m.kinshipUrdu,
+                            size: 24, height: 1.8, color: YaadainTheme.muted),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
-      clipBehavior: Clip.antiAlias,
-      child: img,
-    );
-  }
-}
-
-class _GoldRule extends StatelessWidget {
-  final double width;
-  const _GoldRule({this.width = 60});
-  @override
-  Widget build(BuildContext context) => Container(
-        width: width,
-        height: 1.4,
-        color: YaadainTheme.leafRule.withOpacity(0.55),
-      );
-}
-
-class _EmptyState extends StatelessWidget {
-  final bool roman;
-  const _EmptyState({required this.roman});
-
-  @override
-  Widget build(BuildContext context) {
-    return EmptyState(
-      emoji: '🌳',
-      title: roman ? 'Aap ka shajra abhi khali hai' : 'آپ کا شجرہ ابھی خالی ہے',
-      subtitle: roman
-          ? 'Ghar wale “Family setup” mein ja kar apne pyaron ko shamil karein.'
-          : 'ترتیبات میں جا کر اپنے پیاروں کو شامل کریں۔',
     );
   }
 }

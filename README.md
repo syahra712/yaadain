@@ -9,7 +9,7 @@ Every relative is a **face + their real voice + their relationship _to the elder
 
 ## Yaadain 2: the redesign
 
-Version 2 redesigns the whole app: 35 screens across every phone in the family. These are the finished designs, and they are being built into the app now.
+Version 2 redesigns the whole app: 35 screens across every phone in the family. All of them are built into the app, and the Android build plays the whole story on one phone in demo mode ([how to run it](#run-it)).
 
 - **One language per screen.** The elder's screens are entirely Urdu, set in Noto Nastaliq. The family's screens are entirely English. Nothing mixes the two, and every screen passes an automated script-mixing check.
 - **Built for his hands and eyes.** Touch targets are 56px or larger (main actions 64 to 80px), no Urdu text is smaller than 20px, and every screen has the same back and home buttons. One warm clay colour marks the single most important action on a screen.
@@ -74,14 +74,24 @@ It deliberately avoids the parts of the "ambient AI companion" idea that are cli
 
 | Feature | For whom | What it is |
 |---|---|---|
-| **Family tree** (میرا خاندان) | Elder | A warm grid of faces, each labelled **"YOUR daughter / beti"** — from the elder's point of view. Tap a face → hear that person's real recorded voice. |
-| **Flashbacks** (یادیں) | Elder | Say or type a word — a name, a place, "Eid", "shaadi" — and Yaadain surfaces the matching **recorded** memory. Retrieval only; it can only play back what family recorded. |
-| **Who is this?** (یہ کون ہے؟) | Elder | Fast recognition helper for "someone is here and I don't know them." Tap a face → big "YOUR ___, <name>" + their voice. |
-| **I'm safe** (میں ٹھیک ہوں) | Elder | Calm reassurance + one-tap call to family. |
-| **Safe zone** | Family | A home point + radius. Alerts **on leaving** — event-based, never a live track. |
-| **"If found" card** | Family | A printable QR that encodes contact info **inside itself** — a stranger scans it offline, no app or server. |
+| **Home** (گھر) | Elder | One calm card: the day, the date (Gregorian and Hijri), whether he is at home, who is home, the next prayer and what comes next. It changes for the evening and for the night. |
+| **My family** (میرا خاندان) | Elder | Faces labelled from his point of view: "your son, Bilal". A relative who has passed away has a sepia ring and is spoken of gently. |
+| **Who is this?** (یہ کون ہے؟) | Elder | Someone is here and he can't place them. Tap a face to see who they are to him. |
+| **Ask** (پوچھیں) | Elder | The six questions he asks again and again, answered in the family's own words and voices. Every ask is logged for the weekly report. |
+| **Voices** (آوازیں) | Elder | Short hellos the family records for him. |
+| **Calm** (سکون) | Elder | A quiet screen for unsettled moments, day or night. |
+| **Help** (مجھے مدد چاہیے) | Elder | One big button. When he is outside it alerts the family, and his phone tells him in Urdu who is coming. |
+| **If found card** | Elder, for a stranger | Who he is, where he lives and whom to call. Urdu first, with an English version one tap away. |
+| **Where is Abu** | Family | Is he home, a radar of home, his safe zones and where he is, and a timeline of today. |
+| **Alerts** | Family | He left a safe zone. Tap "I'm on my way" and his phone shows that you are coming. The alert shows who is next in the circle if nobody answers. |
+| **Find Abu** | Family | Last known position and a missing-person pack ready to share: what he looks like today, medication, places he may go. |
+| **Care circle** | Family | Who is on duty, shifts and handoff notes. |
+| **Weekly report** | Family | When he got confused this week and about what, from his asks. |
+| **Set up for him** | Family | Relatives, the answers to his questions, routine and medicine, and recorded hellos. |
 
 ## The Urdu-NLP piece (`lib/nlp/`)
+
+In version 2 the elder asks from six fixed questions instead of searching, so this matcher is not wired into the new screens yet. It is kept, and unit-tested, for spoken questions later.
 
 Flashback matching is **script-tolerant**: family type triggers however they like — `شادی`, `shaadi`, `shadi`, `SHAADI` — and the elder asks in yet another spelling. We reduce **both** Urdu-script and Roman-Urdu to a shared **consonant skeleton** (short vowels dropped, digraphs folded, letter variants unified), then compare with a normalized edit-distance ratio.
 
@@ -95,25 +105,31 @@ flutter test
 
 ## Architecture
 
-**Offline-first. No backend. No accounts. No cloud.** Vulnerable family data (faces, voices, relationships) never leaves the phone — a deliberate privacy + low-connectivity choice, not a limitation.
+**Offline-first.** Everything works with no network and no account: faces, voices and relationships live on the phone. Sharing his status between family phones goes through Firebase. It is optional and switched off in the demo build ([FIREBASE_SYNC.md](FIREBASE_SYNC.md)).
 
 ```
 lib/
-  models/         family_member, memory_story, relationship (joint-family vocab), elder_profile
-  data/           repository.dart — JSON + media files in the app's private dir
-  state/          app_state.dart  — ChangeNotifier over the repository
-  nlp/            urdu_match.dart, flashback_engine.dart
-  services/       audio_service.dart — record + playback
-  screens/
-    elder/        elder_home, family_tree, member_detail, who_is_this, flashbacks, im_safe
-    caregiver/    caregiver_home, edit_member, elder_profile, safe_zone, if_found_card
-  widgets/        member_avatar, voice_recorder
+  main.dart, routes.dart   start-up and every screen route
+  config.dart              the tracking switch: demo or firestore
+  design/       scaffolds (elder Urdu RTL, family English), buttons, cards, avatar, jaali pattern
+  util/         Urdu digits and dates, Hijri date, approximate Karachi prayer times, app clock
+  models/       family_member, kinship, care (routine, circle, alerts, zones), elder_profile, episode_log
+  data/         repository.dart (JSON on the phone), demo_seed.dart (the demo family)
+  state/        app_state.dart, a ChangeNotifier over the repository
+  tracking/     one interface with a scripted demo source and a Firestore source;
+                elder_reaction opens Help and "I'm safe" on his phone
+  demo/         presenter controls
+  settings/     PIN-locked settings on the elder's phone
+  services/     audio, notifications, Firebase gate and sync, platform wrappers
+  nlp/          urdu_match, flashback_engine
+  screens/      onboarding/, elder/, safety/, family/
 ```
 
 - **Storage:** `data.json` + `media/<uuid>.<ext>` under the app documents dir.
 - **Audio:** real recordings via `record`, played via `audioplayers`. **No voice synthesis / cloning.**
-- **Elder UI:** large type, big targets, Urdu-script RTL with a Roman-Urdu toggle.
-- **Caregiver UI:** reached by long-pressing the ⚙ on the elder home.
+- **Elder UI:** Urdu only, Noto Nastaliq, right to left, Urdu digits, touch targets of 56px or more.
+- **Family UI:** English only.
+- **Tests:** `flutter test` runs the NLP unit tests and a screenshot test of every screen (`test/visual/`).
 
 ## What we deliberately did NOT build
 
@@ -121,7 +137,7 @@ This section is the point, not a disclaimer:
 
 - **No voice cloning / synthesis.** Generating novel speech in a real (especially deceased) person's voice for someone who can't consent is deceptive and risks re-grief. Yaadain plays only what family actually recorded.
 - **No reality-correction / forced re-orientation.** Repeatedly telling a dementia patient "you're wrong" about their reality (Reality Orientation therapy) is clinically contested and can increase distress. Deceased relatives are handled gently; the elder is never bluntly told of a death.
-- **No live GPS tracking.** The safe zone stores only a home point + radius and alerts on leaving — never a continuous trail. A memory companion is not a surveillance device.
+- **No location trail.** The family sees only his latest position, one point overwritten every two minutes, and an alert when he leaves a safe zone. No history of where he has been is kept. A memory companion is not a surveillance device.
 - **No agitation-detection ML.** Reliable affect/confusion detection from elderly dialect-accented speech is not a solved problem; we don't claim accuracy we can't defend. Uncertain moments fail toward **silence and a human**, never a guess.
 - **No real patient data.** Demo uses consenting stand-ins.
 
@@ -132,13 +148,24 @@ flutter pub get
 flutter run
 ```
 
-Requires Flutter 3.22+, an Android device/emulator, and (for building) JDK 11
-(`flutter config --jdk-dir=<jdk11>`).
+Requires Flutter 3.22+, an Android device or emulator, and JDK 17 for building
+(`flutter config --jdk-dir=<jdk17>`).
+
+The Firebase config files are not in the repo. To build without Firebase, copy
+`lib/firebase_options.dart.example` to `lib/firebase_options.dart` and
+`android/app/google-services.json.example` to `android/app/google-services.json`.
+The app sees the placeholder keys and runs offline. To connect a real project,
+follow [FIREBASE_SYNC.md](FIREBASE_SYNC.md).
+
+**Demo mode.** One phone plays the whole story. On the elder's home screen, hold
+the logo for 3 seconds, enter PIN 1947 and open **Demo controls**. From there you
+can load the demo family, switch between Dada Jaan's, Bilal's and Fatima's phones,
+make him leave home, answer the alert, and preview the evening and night screens.
 
 ## Status
 
-Hackathon build. Elder + caregiver flows, flashback NLP, safe zone, and the
-"if found" card are implemented and the NLP is unit-tested. Background
-geofencing is foreground-checked with an honest "simulate leaving" demo aid.
-
-The Yaadain 2 designs above are complete and are being built into the app.
+Competition build, October 2026. All 35 Yaadain 2 screens are in the app, the
+Android release runs the demo story on one phone, and `flutter test` passes
+(93 tests, including a screenshot test of every screen). Sharing his status
+between two phones is written but switched off until a Firebase project is
+connected ([FIREBASE_SYNC.md](FIREBASE_SYNC.md)).

@@ -16,12 +16,23 @@ class NotificationService {
     const android = AndroidInitializationSettings('@mipmap/ic_launcher');
     const ios = DarwinInitializationSettings();
     await _plugin.initialize(const InitializationSettings(android: android, iOS: ios));
-    // Android 13+ requires this to be asked at runtime — without it, show()
-    // silently does nothing and the family device never sees the alert.
-    await _plugin
-        .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
-        ?.requestNotificationsPermission();
+    // NOTE: init no longer asks for POST_NOTIFICATIONS. The Permissions
+    // onboarding screen calls [requestPermission] at the right moment.
     _ready = true;
+  }
+
+  /// Android 13+ runtime permission. Returns true when granted (or when the
+  /// platform needs no runtime grant). Safe to call repeatedly.
+  Future<bool> requestPermission() async {
+    try {
+      if (!_ready) await init();
+      final granted = await _plugin
+          .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
+          ?.requestNotificationsPermission();
+      return granted ?? true;
+    } catch (_) {
+      return false;
+    }
   }
 
   Future<void> showSafeZoneAlert(String title, String body) async {
