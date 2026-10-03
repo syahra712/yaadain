@@ -162,6 +162,16 @@ the logo for 3 seconds, enter PIN 1947 and open **Demo controls**. From there yo
 can load the demo family, switch between Dada Jaan's, Bilal's and Fatima's phones,
 make him leave home, answer the alert, and preview the evening and night screens.
 
+## Watch it
+
+Three short screen recordings of the Android build, taken on an emulator in demo mode:
+
+- [The elder's phone](docs/media/01-elder-phone.mp4): setup, then Dada Jaan's Urdu home, family tree, "who is this", questions, calm and voices.
+- [The safety story](docs/media/02-safety-story.mp4): he leaves the home zone, Bilal sees the alert and answers, Dada Jaan sees "Bilal is coming".
+- [Day and night](docs/media/03-day-and-night.mp4): the night, evening and day home screens.
+
+The cinematic walkthrough lives in [docs/](docs/index.html). Once GitHub Pages is on for the `docs` folder it is served at https://syahra712.github.io/yaadain/. It is one self-contained page with no external requests.
+
 ## Status
 
 Competition build, October 2026. All 35 Yaadain 2 screens are in the app, the
