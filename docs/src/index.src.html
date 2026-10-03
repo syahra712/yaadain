@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yaadain 2 - A living family tree</title>
+<meta name="description" content="Yaadain 2: a living family tree for Urdu-speaking elders with memory loss. Competition presentation.">
+<meta name="author" content="Yaadain · syahra712">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+@font-face{font-family:"Fraunces";src:url(fonts/Fraunces-Regular.ttf) format("truetype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Fraunces";src:url(fonts/Fraunces-Italic.ttf) format("truetype");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Fraunces";src:url(fonts/Fraunces-SemiBold.ttf) format("truetype");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"Fraunces";src:url(fonts/Fraunces-Bold.ttf) format("truetype");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Nunito";src:url(fonts/Nunito.ttf) format("truetype");font-weight:200 1000;font-style:normal;font-display:swap}
+@font-face{font-family:"Noto Nastaliq Urdu";src:url(fonts/NotoNastaliqUrdu.ttf) format("truetype");font-weight:400 700;font-style:normal;font-display:swap}
+
+:root{
+  --bg:#15100B; --bg2:#1D1610; --panel:#241C14; --line:#3A2F23;
+  --paper:#F3EBDC; --muted:#B9AC97; --dim:#8C7F6B;
+  --teal:#1F6F5C; --teal-d:#124C3E; --teal-l:#8CCBB6;
+  --clay:#9E5626; --gold:#B88A3E; --sepia:#A9998A; --red:#B3261E;
+  --serif:"Fraunces",Georgia,serif; --sans:"Nunito",system-ui,sans-serif;
+  --urdu:"Noto Nastaliq Urdu",serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--bg);color:var(--paper);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+body{overflow:hidden}
+#deck{position:fixed;inset:0;overflow-y:auto;overflow-x:hidden;scroll-snap-type:y mandatory;scrollbar-width:none}
+#deck::-webkit-scrollbar{display:none}
+.slide{position:relative;height:100vh;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;overflow:hidden;display:flex;align-items:center;padding:clamp(56px,9vh,96px) clamp(24px,6vw,110px) clamp(48px,8vh,80px);isolation:isolate}
+.slide::before{content:"";position:absolute;inset:0;z-index:-2;background:
+  radial-gradient(900px 600px at 85% 10%,rgba(31,111,92,.16),transparent 60%),
+  radial-gradient(700px 500px at 5% 95%,rgba(184,138,62,.07),transparent 60%),var(--bg)}
+.wrap{width:100%;max-width:1500px;margin:0 auto;display:grid;gap:clamp(24px,4vw,72px);align-items:center}
+
+/* type */
+.kicker{font:700 clamp(11px,1.05vw,14px)/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:12px;margin-bottom:clamp(14px,2.4vh,26px)}
+.kicker::before{content:"";width:28px;height:4px;border-radius:2px;background:var(--clay)}
+h1,h2{font-family:var(--serif);font-weight:600;letter-spacing:-.015em;line-height:1.04}
+h2{font-size:clamp(30px,4.3vw,68px)}
+h2 em,h1 em{font-style:italic;font-weight:400;color:var(--teal-l)}
+.lede{font-size:clamp(16px,1.55vw,23px);line-height:1.55;color:var(--muted);max-width:34em;margin-top:clamp(14px,2.4vh,26px)}
+.lede b{color:var(--paper);font-weight:700}
+.ur{font-family:var(--urdu);direction:rtl;line-height:2.1;padding-block:.25em;font-weight:500;unicode-bidi:isolate}
+.cap{font-size:clamp(12px,1vw,14px);color:var(--muted);line-height:1.4}
+.cap b{display:block;color:var(--paper);font-size:clamp(14px,1.2vw,17px);font-weight:700}
+.cap .ur{display:block;font-size:clamp(17px,1.4vw,22px);color:var(--teal-l);margin-top:2px;text-align:center}
+
+/* phones */
+.ph{--h:56vh;position:relative;height:var(--h);aspect-ratio:390/844;padding:calc(var(--h)*.014);border-radius:calc(var(--h)*.085);background:linear-gradient(145deg,#3b3025,#0d0905 60%);border:1px solid #4a3d2e;
+  box-shadow:0 40px 80px -20px rgba(0,0,0,.7),0 0 0 1px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.04);
+  transform:perspective(1300px) rotateY(calc(var(--mx,0)*9deg + var(--ry,0deg))) rotateX(calc(var(--my,0)*-5deg)) translateZ(0);transition:transform .5s var(--ease);will-change:transform}
+.scr{position:relative;width:100%;height:100%;border-radius:calc(var(--h)*.072);overflow:hidden;background:var(--teal-d)}
+.scr img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
+.ph::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(115deg,rgba(255,255,255,.10),transparent 30%);pointer-events:none}
+.tag{display:inline-block;margin-top:12px;font:700 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--teal-l);border:1px solid rgba(140,203,182,.35);padding:7px 11px;border-radius:99px}
+.fig{display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(10px,1.8vh,18px)}
+.row{display:flex;justify-content:center;align-items:flex-start;gap:clamp(18px,2.6vw,46px)}
+
+/* reveal */
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--d,0)*110ms)}
+.js .slide.in .rv{opacity:1;transform:none}
+
+/* progress / chrome */
+#bar{position:fixed;left:0;top:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--gold),var(--paper));z-index:20}
+#count{position:fixed;right:clamp(16px,2.4vw,40px);top:clamp(14px,2.4vh,26px);z-index:20;font:700 13px/1 var(--sans);letter-spacing:.14em;color:var(--muted);font-variant-numeric:tabular-nums}
+#count b{color:var(--paper)}
+#brand{position:fixed;left:clamp(16px,2.4vw,40px);top:clamp(14px,2.4vh,26px);z-index:20;font:600 15px/1 var(--serif);letter-spacing:.02em;color:var(--muted)}
+#nav{position:fixed;right:clamp(14px,2.4vw,40px);bottom:clamp(12px,2.4vh,26px);z-index:20;display:flex;gap:8px}
+#nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(21,16,11,.7);color:var(--paper);cursor:pointer;display:grid;place-items:center;backdrop-filter:blur(6px);transition:background .3s,border-color .3s}
+#nav button:hover,#nav button:focus-visible{background:var(--panel);border-color:var(--gold);outline:none}
+#nav svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#hint{position:fixed;left:clamp(16px,2.4vw,40px);bottom:clamp(14px,2.6vh,28px);z-index:20;font-size:12px;color:var(--dim);letter-spacing:.06em}
+
+/* 1 title */
+.s-title{padding-top:0;padding-bottom:0}
+.s-title::before{background:#0f0b07}
+.aur{position:absolute;inset:-20%;z-index:-1;filter:blur(40px);pointer-events:none}
+.aur i{position:absolute;border-radius:50%;opacity:.55}
+.aur i:nth-child(1){width:60vw;height:60vw;left:-5%;top:-10%;background:radial-gradient(circle,#1F6F5C,transparent 65%);animation:drift1 26s ease-in-out infinite alternate}
+.aur i:nth-child(2){width:50vw;height:50vw;right:0;bottom:-10%;background:radial-gradient(circle,rgba(158,86,38,.55),transparent 65%);animation:drift2 32s ease-in-out infinite alternate}
+.aur i:nth-child(3){width:40vw;height:40vw;left:35%;top:30%;background:radial-gradient(circle,rgba(184,138,62,.35),transparent 65%);animation:drift3 38s ease-in-out infinite alternate}
+@keyframes drift1{to{transform:translate(18vw,14vh) scale(1.2)}}
+@keyframes drift2{to{transform:translate(-20vw,-12vh) scale(1.15)}}
+@keyframes drift3{to{transform:translate(-12vw,16vh) scale(.85)}}
+.jaali{position:absolute;inset:0;z-index:-1;opacity:.5;pointer-events:none;-webkit-mask-image:radial-gradient(ellipse at 70% 40%,#000,transparent 70%);mask-image:radial-gradient(ellipse at 70% 40%,#000,transparent 70%);transition:transform .6s var(--ease);transform:translate(calc(var(--mx,0)*-14px),calc(var(--my,0)*-10px))}
+.jaali svg{width:100%;height:100%}
+.grain{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.22;mix-blend-mode:overlay}
+.grain svg{width:100%;height:100%}
+.s-title .wrap{grid-template-columns:1.25fr .75fr;position:relative;z-index:1}
+.s-title h1{font-size:clamp(54px,9.5vw,170px);font-weight:600;line-height:.92;letter-spacing:-.03em}
+.s-title .wm{font-family:var(--urdu);direction:rtl;font-size:clamp(34px,4vw,64px);line-height:2;color:var(--gold);display:block;text-align:left;direction:ltr;margin-top:.1em}
+.s-title .wm span{direction:rtl;display:inline-block;unicode-bidi:isolate}
+.s-title .sub{font:400 italic clamp(18px,2.2vw,34px)/1.3 var(--serif);color:var(--paper);max-width:22em;margin-top:clamp(10px,2vh,24px)}
+.meta{margin-top:clamp(20px,4vh,48px);font-size:clamp(12px,1.05vw,15px);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);line-height:1.9}
+.meta b{color:var(--paper)}
+.s-title .ph{--h:min(72vh,780px);--ry:-14deg;margin-left:auto;animation:float 9s ease-in-out infinite}
+@keyframes float{50%{translate:0 -14px}}
+
+/* 2 problem */
+.s-problem .wrap{grid-template-columns:1.1fr .9fr}
+.big{font:400 italic clamp(28px,3.6vw,58px)/1.18 var(--serif);color:var(--paper)}
+.big em{color:var(--teal-l)}
+.tri{display:grid;gap:clamp(10px,1.8vh,18px)}
+.tri div{border-left:2px solid var(--line);padding:6px 0 6px 20px}
+.tri div:hover{border-color:var(--gold)}
+.tri b{display:block;font:600 clamp(18px,1.7vw,26px)/1.2 var(--serif)}
+.tri span{color:var(--muted);font-size:clamp(14px,1.2vw,18px);line-height:1.5}
+
+/* 3 idea */
+.s-idea .wrap{grid-template-columns:1fr 1fr}
+.eq{display:grid;gap:12px}
+.eq .t{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:clamp(14px,2.4vh,24px) clamp(16px,2vw,28px)}
+.eq .n{font:italic 400 clamp(30px,3.4vw,52px)/1 var(--serif);color:var(--gold);min-width:1.2em}
+.eq b{font:600 clamp(18px,1.8vw,28px)/1.2 var(--serif);display:block}
+.eq span{color:var(--muted);font-size:clamp(13px,1.15vw,17px)}
+.eq .sum{border-style:dashed;background:transparent}
+.eq .sum .n{color:var(--teal-l)}
+
+/* 4 three phones */
+.s-three .wrap{grid-template-columns:1fr;text-align:center;justify-items:center;gap:clamp(14px,3vh,32px)}
+.s-three .ph{--h:clamp(260px,52vh,640px)}
+.s-three .row{gap:clamp(24px,5vw,90px)}
+.s-three .row .fig:nth-child(1) .ph{--ry:12deg}
+.s-three .row .fig:nth-child(3) .ph{--ry:-12deg}
+.role b{font:600 clamp(20px,2vw,30px)/1.1 var(--serif);display:block}
+.role span{display:block;color:var(--muted);font-size:clamp(13px,1.1vw,16px);max-width:22em;margin-top:4px;line-height:1.45}
+
+/* 5 elder */
+.s-elder .wrap{grid-template-columns:1fr 1.7fr}
+.s-elder .ph{--h:clamp(240px,50vh,600px)}
+.s-elder .row{gap:clamp(12px,1.8vw,30px)}
+.s-elder .row .fig:nth-child(odd){margin-top:clamp(0px,3vh,34px)}
+.big-ur{font-size:clamp(34px,4vw,64px);color:var(--gold);line-height:2.1}
+.ln{font-size:clamp(14px,1.2vw,18px);color:var(--muted);line-height:1.6;margin-top:10px}
+
+/* 6 safety */
+.s-safe .wrap{grid-template-columns:1fr auto;}
+.steps{list-style:none;display:grid;gap:8px;margin-top:clamp(14px,3vh,30px);counter-reset:s}
+.steps button{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:grid;grid-template-columns:34px 1fr;gap:14px;align-items:start;padding:clamp(8px,1.4vh,14px) 14px;border-radius:16px;border:1px solid transparent;color:var(--dim);transition:all .5s var(--ease)}
+.steps button:focus-visible{outline:2px solid var(--gold)}
+.steps .no{width:30px;height:30px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font:700 13px var(--sans)}
+.steps h3{font:600 clamp(16px,1.5vw,22px)/1.2 var(--serif)}
+.steps p{max-height:0;overflow:hidden;opacity:0;font-size:clamp(13px,1.1vw,16px);line-height:1.5;color:var(--muted);transition:all .5s var(--ease)}
+.steps button.on{background:var(--panel);border-color:var(--line);color:var(--paper)}
+.steps button.on .no{background:var(--paper);color:var(--bg);border-color:var(--paper)}
+.steps button.on .u{display:block}
+.steps button.on p{max-height:130px;opacity:1;margin-top:4px}
+.steps .u{display:none;font-family:var(--urdu);direction:rtl;font-size:clamp(16px,1.4vw,21px);line-height:2;color:var(--teal-l);margin-top:2px}
+.stage{display:grid;justify-items:center;gap:6px}
+.stage .ph{--h:clamp(280px,64vh,700px)}
+.stage .scr img{opacity:0;transition:opacity .8s var(--ease),transform 1.2s var(--ease);transform:scale(1.03)}
+.stage .scr img.on{opacity:1;transform:none}
+.stage .tag{margin-top:6px}
+.pbar{width:100%;height:2px;background:var(--line);border-radius:2px;margin-top:10px;overflow:hidden}
+.pbar i{display:block;height:100%;width:0;background:var(--gold)}
+
+/* 7 caregiver */
+.s-care .wrap{grid-template-columns:1fr;gap:clamp(14px,3vh,34px)}
+.s-care header{max-width:46em}
+.s-care .ph{--h:clamp(230px,46vh,560px)}
+.s-care .row{gap:clamp(14px,2.4vw,40px)}
+.s-care .cap{max-width:17em}
+
+/* 8 principles */
+.s-princ .wrap{grid-template-columns:1fr;gap:clamp(18px,3.4vh,40px)}
+.cards{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(10px,1.2vw,18px)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:clamp(16px,2.4vh,28px) clamp(14px,1.4vw,22px);display:flex;flex-direction:column;gap:10px;transition:transform .5s var(--ease),border-color .5s}
+.card:hover{transform:translateY(-6px);border-color:var(--gold)}
+.card .num{font:600 clamp(36px,4.6vw,76px)/1 var(--serif);color:var(--paper);letter-spacing:-.03em}
+.card .num small{font-size:.4em;color:var(--gold);margin-left:2px}
+.card h3{font:700 clamp(14px,1.25vw,18px)/1.25 var(--sans)}
+.card p{color:var(--muted);font-size:clamp(12px,1vw,15px);line-height:1.5}
+.sw{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--muted)}
+.sw span{display:flex;align-items:center;gap:8px;margin-right:12px}
+.sw i{width:22px;height:22px;border-radius:50%;border:1px solid rgba(255,255,255,.18);display:inline-block}
+
+/* 9 privacy */
+.s-priv .wrap{grid-template-columns:1.25fr .75fr}
+.pts{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.4vw,18px);margin-top:clamp(16px,3vh,32px)}
+.pts div{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:clamp(12px,2vh,20px) clamp(14px,1.4vw,20px)}
+.pts b{display:block;font:600 clamp(15px,1.4vw,21px)/1.2 var(--serif);margin-bottom:6px}
+.pts span{color:var(--muted);font-size:clamp(12px,1vw,15px);line-height:1.5}
+.s-priv .row .ph{--h:clamp(230px,52vh,620px)}
+.s-priv .row .fig:nth-child(1) .ph{--ry:10deg}
+.s-priv .row .fig:nth-child(2) .ph{--ry:-10deg}
+
+/* 10 arch */
+.s-arch .wrap{grid-template-columns:1fr;gap:clamp(12px,3vh,30px)}
+.s-arch svg{width:100%;max-height:62vh;height:auto}
+.s-arch text{font-family:var(--sans);fill:var(--paper)}
+.s-arch .t1{font-weight:700;font-size:17px}
+.s-arch .t2{font-size:13.5px;fill:var(--muted)}
+.s-arch .lab{font-size:11.5px;letter-spacing:.16em;fill:var(--dim);font-weight:700;text-transform:uppercase}
+.s-arch .bx{fill:var(--panel);stroke:var(--line);stroke-width:1.5}
+.s-arch .on{stroke:var(--teal-l);fill:rgba(31,111,92,.2)}
+.s-arch .off{stroke-dasharray:6 6;stroke:var(--dim);fill:transparent}
+.s-arch .ln2{stroke:var(--muted);stroke-width:1.5;fill:none}
+.s-arch .dash{stroke-dasharray:6 6;stroke:var(--dim)}
+.s-arch .flow{stroke:var(--gold);stroke-width:2;fill:none;stroke-dasharray:4 10;animation:dash 1.6s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-28}}
+
+/* 11 demo */
+.s-demo .wrap{grid-template-columns:auto 1fr;gap:clamp(28px,6vw,110px)}
+.vph{--h:clamp(300px,76vh,820px);--ry:8deg}
+.vph .scr{background:#0d0905 url(screens/Main.png) top/cover no-repeat}
+.vph video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:transparent;border-radius:inherit}
+.vph .note{position:absolute;left:12px;right:12px;top:30%;background:rgba(21,16,11,.82);border:1px solid var(--line);border-radius:14px;padding:10px 12px;font-size:12px;line-height:1.4;color:var(--muted);text-align:center;opacity:0;transition:opacity .4s;pointer-events:none}
+.vph.missing .note{opacity:1}
+.chap{list-style:none;margin-top:clamp(14px,3vh,30px);display:grid;gap:4px;max-height:52vh;overflow:auto;scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.chap button{all:unset;box-sizing:border-box;width:100%;display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:center;padding:clamp(7px,1.3vh,12px) 14px;border-radius:12px;cursor:pointer;color:var(--muted);transition:all .3s;font-size:clamp(14px,1.2vw,18px)}
+.chap button:hover,.chap button:focus-visible{background:var(--panel);color:var(--paper)}
+.chap button:focus-visible{outline:2px solid var(--gold)}
+.chap button.on{background:var(--panel);color:var(--paper);box-shadow:inset 3px 0 0 var(--gold)}
+.chap .n{font:600 20px var(--serif);color:var(--gold)}
+.chap strong{display:block;font:600 clamp(17px,1.6vw,24px)/1.2 var(--serif);color:var(--paper)}
+.chap em{display:block;font-style:normal;font-size:clamp(13px,1.05vw,16px);line-height:1.45;margin-top:3px}
+.playall{all:unset;cursor:pointer;margin-top:clamp(12px,2vh,22px);display:inline-block;border:1px solid var(--gold);color:var(--paper);padding:11px 22px;border-radius:99px;font:700 14px var(--sans);letter-spacing:.06em}
+.playall:hover,.playall:focus-visible{background:var(--paper);color:var(--bg)}
+.chap time{font:700 13px var(--sans);font-variant-numeric:tabular-nums;color:var(--gold);letter-spacing:.06em}
+
+/* 12 roadmap */
+.s-road .wrap{grid-template-columns:1fr;gap:clamp(18px,3.6vh,44px)}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.6vw,26px);position:relative}
+.col{border-top:2px solid var(--line);padding-top:18px;position:relative}
+.col::before{content:"";position:absolute;top:-6px;left:0;width:10px;height:10px;border-radius:50%;background:var(--gold)}
+.col:nth-child(3)::before{background:var(--dim)}
+.col h3{font:700 12px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.col ul{list-style:none;display:grid;gap:12px}
+.col li{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:clamp(14px,2vh,22px);font-size:clamp(13px,1.15vw,17px);line-height:1.5;color:var(--muted)}
+.col li b{display:block;font:600 clamp(16px,1.5vw,23px)/1.2 var(--serif);color:var(--paper);margin-bottom:6px}
+
+/* 13 close */
+.s-close{text-align:center;justify-content:center}
+.s-close .wrap{justify-items:center;max-width:1100px}
+.s-close .mark{width:clamp(70px,10vh,110px)}
+.s-close h2{font-size:clamp(34px,5.6vw,96px)}
+.s-close .quote{font:italic 400 clamp(17px,1.9vw,28px)/1.45 var(--serif);color:var(--muted);max-width:30em}
+.repo{display:inline-flex;align-items:center;gap:12px;font:700 clamp(17px,1.9vw,28px)/1 var(--sans);color:var(--paper);text-decoration:none;border:1px solid var(--gold);padding:18px 30px;border-radius:99px;transition:background .4s,color .4s}
+.repo:hover,.repo:focus-visible{background:var(--paper);color:var(--bg);outline:none}
+.by{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+
+/* responsive: narrow */
+@media (max-width:900px){
+  body{overflow:auto}
+  #deck{scroll-snap-type:y proximity}
+  .slide{height:auto;min-height:100vh;min-height:100dvh;align-items:flex-start;padding:70px 20px 80px}
+  .slide .wrap{grid-template-columns:minmax(0,1fr)!important}
+  .wrap>*{min-width:0}
+  .s-three .wrap{justify-items:stretch}
+  .s-title{align-items:center}
+  .s-title .ph{--h:min(52vh,460px);margin:10px auto 0}
+  .row{flex-wrap:wrap}
+  .s-three .row,.s-elder .row,.s-care .row,.s-priv .row{gap:22px 16px}
+  .s-three .ph{--h:min(40vh,340px)}
+  .s-elder .ph,.s-care .ph,.s-priv .row .ph{--h:min(32vh,260px)}
+  .s-elder .row .fig:nth-child(odd){margin-top:0}
+  .s-elder .row .fig,.s-care .row .fig,.s-priv .row .fig{width:calc(50% - 10px)}
+  .stage{order:-1}.stage .ph{--h:min(52vh,460px)}
+  .cards,.cols,.pts{grid-template-columns:1fr 1fr}
+  .cards .card:last-child{grid-column:1/-1}
+  .cols{grid-template-columns:1fr}
+  .vph{--h:min(66vh,560px);margin:0 auto}
+  .s-arch svg{max-height:none}
+  #hint{display:none}
+  #brand{display:none}
+  .chap{max-height:none}
+}
+@media (max-width:520px){.pts,.cards{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .js .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<div id="brand">Yaadain 2</div>
+<div id="count" aria-live="polite"><b id="cur">01</b> / <span id="tot">13</span></div>
+<div id="hint">Arrow keys, space or swipe</div>
+<div id="nav">
+  <button id="prev" aria-label="Previous slide"><svg viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></svg></button>
+  <button id="next" aria-label="Next slide"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+</div>
+
+<main id="deck">
+
+<!-- 1 TITLE -->
+<section class="slide s-title" id="s1" data-tilt>
+  <div class="aur"><i></i><i></i><i></i></div>
+  <div class="jaali"><svg preserveAspectRatio="xMidYMid slice"><defs><pattern id="jl" width="44" height="44" patternUnits="userSpaceOnUse" fill="none" stroke="#F3EBDC" stroke-opacity=".09" stroke-width="1"><rect x="12" y="12" width="20" height="20"/><path d="M22 7.9L36.1 22 22 36.1 7.9 22z"/><path d="M0 22h7.9M36.1 22H44M22 0v7.9M22 36.1V44"/></pattern></defs><rect width="100%" height="100%" fill="url(#jl)"/></svg></div>
+  <div class="grain"><svg preserveAspectRatio="none"><filter id="gn"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#gn)"/></svg></div>
+  <div class="wrap">
+    <div>
+      <div class="kicker rv">Competition build &middot; October 2026</div>
+      <h1 class="rv" style="--d:1">Yaadain <em>2</em></h1>
+      <span class="wm rv" style="--d:2"><span class="ur">یادیں</span></span>
+      <p class="sub rv" style="--d:3">A living family tree for Urdu-speaking elders with memory loss.</p>
+      <p class="meta rv" style="--d:4"><b>Yaadain &middot; syahra712</b><br>35 screens &middot; one phone plays the whole story</p>
+    </div>
+    <div class="rv" style="--d:2"><figure class="ph"><div class="scr"><img src="screens/Splash.png" alt="Yaadain launch screen"></div></figure></div>
+  </div>
+</section>
+
+<!-- 2 PROBLEM -->
+<section class="slide s-problem" id="s2">
+  <div class="wrap">
+    <div>
+      <div class="kicker rv">The problem</div>
+      <h2 class="rv" style="--d:1">A family can slip out of a memory, <em>and he out of theirs.</em></h2>
+      <p class="big rv" style="--d:2;margin-top:clamp(18px,3.4vh,40px)">&ldquo;Yaadain keeps the family from disappearing from the elder&rsquo;s memory, and keeps the elder from disappearing from the family.&rdquo;</p>
+    </div>
+    <div class="tri">
+      <div class="rv" style="--d:2"><b>The same questions, again and again</b><span>He asks what day it is, who is here. Each time, the family answers as if it were the first.</span></div>
+      <div class="rv" style="--d:3"><b>Faces he cannot place</b><span>Someone is in the room and he cannot tell who they are to him.</span></div>
+      <div class="rv" style="--d:4"><b>A walk that becomes a worry</b><span>When he is outside, the family needs to know, and he needs to know who is coming.</span></div>
+      <div class="rv" style="--d:5"><b>Few apps are made for this home</b><span>Urdu-speaking joint families, voice-first, are a population Western apps do not serve.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 IDEA -->
+<section class="slide s-idea" id="s3">
+  <div class="wrap">
+    <div>
+      <div class="kicker rv">The idea</div>
+      <h2 class="rv" style="--d:1">A living family tree, <em>in the family&rsquo;s own voice.</em></h2>
+      <p class="lede rv" style="--d:2">Every relative is three things, kept together and kept on the device. Yaadain plays only what the family actually recorded. It <b>never generates</b> speech or invents a memory.</p>
+    </div>
+    <div class="eq">
+      <div class="t rv" style="--d:2"><span class="n">1</span><div><b>A face</b><span>Labelled from his point of view: &ldquo;your son, Bilal&rdquo;.</span></div></div>
+      <div class="t rv" style="--d:3"><span class="n">2</span><div><b>Their real voice</b><span>Short hellos and answers, recorded by the family.</span></div></div>
+      <div class="t rv" style="--d:4"><span class="n">3</span><div><b>Their relationship to the elder</b><span>Precise kinship, spoken gently; a relative who has passed has a sepia ring.</span></div></div>
+      <div class="t sum rv" style="--d:5"><span class="n">=</span><div><b>One calm family, on one phone</b><span>Grounded in reminiscence therapy and simulated presence therapy.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 THREE PHONES -->
+<section class="slide s-three" id="s4" data-tilt>
+  <div class="wrap">
+    <div>
+      <div class="kicker rv" style="justify-content:center">Three phones, one family</div>
+      <h2 class="rv" style="--d:1">One app. <em>Three people.</em></h2>
+    </div>
+    <div class="row">
+      <div class="fig rv" style="--d:2"><figure class="ph"><div class="scr"><img src="screens/Main.png" alt="Elder home screen, in Urdu"></div></figure>
+        <div class="role"><b>The elder</b><span>Calm, large, entirely Urdu. Home, family, who is this, ask, help.</span></div></div>
+      <div class="fig rv" style="--d:3"><figure class="ph"><div class="scr"><img src="screens/CaregiverHome.png" alt="Caregiver home screen"></div></figure>
+        <div class="role"><b>The caregiver</b><span>Bilal, his son. Sets up the elder&rsquo;s phone and sees where Abu is.</span></div></div>
+      <div class="fig rv" style="--d:4"><figure class="ph"><div class="scr"><img src="screens/FamilyHome.png" alt="Family member home screen"></div></figure>
+        <div class="role"><b>The family</b><span>Fatima in Lahore, joined with a family code. Records hellos, stays close.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 ELDER -->
+<section class="slide s-elder" id="s5" data-tilt>
+  <div class="wrap">
+    <div>
+      <div class="kicker rv">The elder&rsquo;s phone</div>
+      <h2 class="rv" style="--d:1">Entirely Urdu. <em>Never a quiz.</em></h2>
+      <p class="lede rv" style="--d:2">Noto Nastaliq, right to left, Urdu digits. He asks from six fixed questions, answered in the family&rsquo;s own words and voices, and every ask is logged for the weekly report.</p>
+    </div>
+    <div class="row">
+      <div class="fig rv" style="--d:2"><figure class="ph"><div class="scr"><img src="screens/Main.png" alt="Home"></div></figure><div class="cap"><b>Home</b><span class="ur">گھر</span></div></div>
+      <div class="fig rv" style="--d:3"><figure class="ph"><div class="scr"><img src="screens/FamilyTree.png" alt="My family"></div></figure><div class="cap"><b>My family</b><span class="ur">میرا خاندان</span></div></div>
+      <div class="fig rv" style="--d:4"><figure class="ph"><div class="scr"><img src="screens/WhoIsThis.png" alt="Who is this?"></div></figure><div class="cap"><b>Who is this?</b><span class="ur">یہ کون ہے؟</span></div></div>
+      <div class="fig rv" style="--d:5"><figure class="ph"><div class="scr"><img src="screens/Poochhein.png" alt="Ask"></div></figure><div class="cap"><b>Ask</b><span class="ur">پوچھیں</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 SAFETY -->
+<section class="slide s-safe" id="s6">
+  <div class="wrap">
+    <div>
+      <div class="kicker rv">The safety story</div>
+      <h2 class="rv" style="--d:1">He walks out. <em>Bilal is on his way.</em></h2>
+      <ol class="steps rv" style="--d:2" id="steps">
+        <li><button data-i="0" class="on"><span class="no">1</span><span><h3>A safe zone is set</h3><p>The family draws safe zones around the places he belongs.</p></span></button></li>
+        <li><button data-i="1"><span class="no">2</span><span><h3>He leaves it</h3><p>Where Is Abu flips: the radar shows his latest position. One point, overwritten every two minutes. No trail is kept.</p></span></button></li>
+        <li><button data-i="2"><span class="no">3</span><span><h3>The family is alerted</h3><p>Bilal taps &ldquo;I&rsquo;m on my way&rdquo;. If nobody answers, the alert shows who is next in the circle.</p></span></button></li>
+        <li><button data-i="3"><span class="no">4</span><span><h3>Help opens on his phone</h3><p>When he is outside, Madad opens by itself. One big button alerts the family.</p><span class="u">مجھے مدد چاہیے</span></span></button></li>
+        <li><button data-i="4"><span class="no">5</span><span><h3>He is told who is coming</h3><p>His phone tells him, in Urdu, that Bilal is coming, with Bilal&rsquo;s face and voice.</p><span class="u">بلال آ رہا ہے</span></span></button></li>
+        <li><button data-i="5"><span class="no">6</span><span><h3>A stranger can help</h3><p>The if-found card shows who he is, where he lives and whom to call. Urdu first, English one tap away.</p></span></button></li>
+      </ol>
+    </div>
+    <div class="stage rv" style="--d:3">
+      <figure class="ph" style="--ry:-8deg"><div class="scr" id="stg">
+        <img class="on" src="screens/SafeZones.png" alt="Safe zones">
+        <img src="screens/WhereIsAbu.png" alt="Where is Abu">
+        <img src="screens/AlertDetail.png" alt="Alert">
+        <img src="screens/Madad.png" alt="Help, Madad">
+        <img src="screens/ImSafe.png" alt="You are safe">
+        <img src="screens/IfFoundUr.png" alt="If found card">
+      </div></figure>
+      <span class="tag" id="stgTag">Bilal&rsquo;s phone</span>
+      <div class="pbar"><i id="pfill"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 CAREGIVER -->
+<section class="slide s-care" id="s7" data-tilt>
+  <div class="wrap">
+    <header>
+      <div class="kicker rv">Tools for the family</div>
+      <h2 class="rv" style="--d:1">Written on a calm day. <em>Ready on the worst one.</em></h2>
+    </header>
+    <div class="row">
+      <div class="fig rv" style="--d:2"><figure class="ph"><div class="scr"><img src="screens/WhereIsAbu.png" alt="Where is Abu"></div></figure><div class="cap"><b>Where is Abu</b>Is he home, a radar of home, his safe zones, and a timeline of today.</div></div>
+      <div class="fig rv" style="--d:3"><figure class="ph"><div class="scr"><img src="screens/SafeZones.png" alt="Safe zones"></div></figure><div class="cap"><b>Safe zones</b>The places he may be, and the alert when he leaves them.</div></div>
+      <div class="fig rv" style="--d:4"><figure class="ph"><div class="scr"><img src="screens/Routine.png" alt="Routine and medicine"></div></figure><div class="cap"><b>Routine and medicine</b>The day&rsquo;s rhythm and his medicine, set once for his phone.</div></div>
+      <div class="fig rv" style="--d:5"><figure class="ph"><div class="scr"><img src="screens/WeeklyReport.png" alt="Weekly report"></div></figure><div class="cap"><b>Weekly report</b>When he got confused this week, and about what, from his asks.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 PRINCIPLES -->
+<section class="slide s-princ" id="s8">
+  <div class="wrap">
+    <div>
+      <div class="kicker rv">Design principles</div>
+      <h2 class="rv" style="--d:1">Built for his hands <em>and his eyes.</em></h2>
+    </div>
+    <div class="cards">
+      <div class="card rv" style="--d:1"><div class="num">56<small>px</small></div><h3>Touch targets</h3><p>Every target is 56px or larger. Main actions are 64 to 80px.</p></div>
+      <div class="card rv" style="--d:2"><div class="num">20<small>px</small></div><h3>Urdu, first</h3><p>No Urdu text is smaller than 20px, set in Noto Nastaliq, right to left.</p></div>
+      <div class="card rv" style="--d:3"><div class="num">1</div><h3>Language per screen</h3><p>Elder screens are all Urdu, family screens all English. An automated script-mixing check enforces it.</p></div>
+      <div class="card rv" style="--d:4"><div class="num">1</div><h3>Clay action</h3><p>One warm clay colour marks the single most important action on a screen.</p></div>
+      <div class="card rv" style="--d:5"><div class="num" style="font-size:clamp(28px,3.4vw,56px);padding:.2em 0">Calm</div><h3>Same back, same home</h3><p>Every screen has the same back and home buttons. Red is kept for a true emergency.</p></div>
+    </div>
+    <div class="sw rv" style="--d:5">
+      <span><i style="background:#F3EBDC"></i>Paper</span><span><i style="background:#2C2620"></i>Ink</span><span><i style="background:#1F6F5C"></i>Teal</span><span><i style="background:#9E5626"></i>Clay</span><span><i style="background:#B3261E"></i>Emergency only</span><span><i style="background:#A9998A"></i>Sepia, for those who have passed</span>
+    </div>
+  </div>
+</section>
+
+<!-- 9 PRIVACY -->
+<section class="slide s-priv" id="s9" data-tilt>
+  <div class="wrap">
+    <div>
+      <div class="kicker rv">Privacy and offline-first</div>
+      <h2 class="rv" style="--d:1">He agreed. <em>It stays on his phone.</em></h2>
+      <div class="pts">
+        <div class="rv" style="--d:2"><b>Consent first</b><span>Explained to him in Urdu, then recorded, with a review date.</span></div>
+        <div class="rv" style="--d:3"><b>Offline-first</b><span>Faces, voices and relationships live on the phone. No network or account needed.</span></div>
+        <div class="rv" style="--d:4"><b>No location trail</b><span>Only his latest position. A memory companion is not a surveillance device.</span></div>
+        <div class="rv" style="--d:5"><b>No real patient data</b><span>The demo family is fictional and uses consenting stand-ins.</span></div>
+        <div class="rv" style="--d:6"><b>Firebase is optional</b><span>Sharing between phones is written, and switched off in the demo build.</span></div>
+        <div class="rv" style="--d:7"><b>What we did not build</b><span>No voice cloning, no reality correction, no agitation-detection ML.</span></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="fig rv" style="--d:3"><figure class="ph"><div class="scr"><img src="screens/Khayal.png" alt="Consent, explained in Urdu"></div></figure></div>
+      <div class="fig rv" style="--d:4"><figure class="ph"><div class="scr"><img src="screens/ConsentRecord.png" alt="Consent recorded"></div></figure></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 ARCHITECTURE -->
+<section class="slide s-arch" id="s10">
+  <div class="wrap">
+    <div>
+      <div class="kicker rv">Architecture</div>
+      <h2 class="rv" style="--d:1">One tracking interface. <em>Two sources.</em></h2>
+    </div>
+    <svg class="rv" style="--d:2" viewBox="0 0 1000 400" role="img" aria-label="Architecture diagram: screens read app state, which uses a repository of JSON on the phone; a tracking interface has a demo source and an optional Firestore source">
+      <text class="lab" x="20" y="24">On the phone</text>
+      <text class="lab" x="620" y="24">Tracking</text>
+      <rect class="bx" x="20" y="44" width="260" height="92" rx="18"/>
+      <text class="t1" x="42" y="82">Screens</text><text class="t2" x="42" y="108">Elder: Urdu, RTL. Family: English.</text>
+      <rect class="bx on" x="20" y="170" width="260" height="92" rx="18"/>
+      <text class="t1" x="42" y="208">AppState</text><text class="t2" x="42" y="234">Flutter, Provider, ChangeNotifier</text>
+      <rect class="bx" x="20" y="296" width="260" height="92" rx="18"/>
+      <text class="t1" x="42" y="334">Repository</text><text class="t2" x="42" y="360">data.json + media/ on the phone</text>
+      <path class="ln2" d="M150 136V170M150 262V296"/>
+      <path class="flow" d="M150 296V262M150 170V136"/>
+      <path class="ln2" d="M280 216H440"/>
+      <rect class="bx on" x="440" y="170" width="250" height="92" rx="18"/>
+      <text class="t1" x="462" y="208">Tracking interface</text><text class="t2" x="462" y="234">config.dart: demo or firestore</text>
+      <path class="ln2" d="M690 216H740M740 100V316M740 100H770M740 316H770"/>
+      <rect class="bx on" x="770" y="54" width="210" height="92" rx="18"/>
+      <text class="t1" x="790" y="92">Demo source</text><text class="t2" x="790" y="118">Scripted. Used today.</text>
+      <rect class="bx off" x="770" y="270" width="210" height="92" rx="18"/>
+      <text class="t1" x="790" y="308">Firestore source</text><text class="t2" x="790" y="334">Optional. Off in the demo.</text>
+      <rect class="bx" x="440" y="296" width="250" height="92" rx="18"/>
+      <text class="t1" x="462" y="334">elder_reaction</text><text class="t2" x="462" y="360">Opens Help and I&rsquo;m safe</text>
+      <path class="ln2" d="M565 262V296"/>
+    </svg>
+  </div>
+</section>
+
+<!-- 11 DEMO -->
+<section class="slide s-demo" id="s11" data-tilt>
+  <div class="wrap">
+    <figure class="ph vph rv" id="vph"><div class="scr">
+      <video id="vid" controls playsinline preload="metadata" poster="media/poster.png" src="media/01-elder-phone.mp4"></video>
+      <div class="note">The recordings play on the hosted page or from the repository folder (media/)</div>
+    </div></figure>
+    <div>
+      <div class="kicker rv">The demo</div>
+      <h2 class="rv" style="--d:1">One phone plays <em>the whole story.</em></h2>
+      <p class="lede rv" style="--d:2">Three short clips, played in order. Choose one to start there.</p>
+      <ol class="chap rv" style="--d:3" id="chap"></ol>
+    </div>
+  </div>
+</section>
+
+<!-- 12 ROADMAP -->
+<section class="slide s-road" id="s12">
+  <div class="wrap">
+    <div>
+      <div class="kicker rv">Status and what is next</div>
+      <h2 class="rv" style="--d:1">Built, tested, <em>and honest about what is not on.</em></h2>
+    </div>
+    <div class="cols">
+      <div class="col rv" style="--d:1"><h3>In the build today</h3><ul>
+        <li><b>35 screens</b>Every phone in the family, all built into the app.</li>
+        <li><b>The Android demo</b>The release plays the whole story on one phone.</li>
+        <li><b>93 tests passing</b>Including a screenshot test of every screen.</li></ul></div>
+      <div class="col rv" style="--d:2"><h3>Next</h3><ul>
+        <li><b>Connect Firebase sync</b>Sharing his status between two phones is written. It is switched off until a Firebase project is connected.</li></ul></div>
+      <div class="col rv" style="--d:3"><h3>Later</h3><ul>
+        <li><b>Spoken Urdu questions</b>A script-tolerant matcher, with unit tests, is kept for spoken questions. It is not wired to the new screens yet.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 CLOSE -->
+<section class="slide s-close" id="s13">
+  <div class="wrap">
+    <svg class="mark rv" viewBox="0 0 100 100" aria-hidden="true"><path d="M24 24H76V76H24Z" fill="#F3EBDC"/><path d="M50 13.2L86.8 50 50 86.8 13.2 50Z" fill="#F3EBDC"/><circle cx="50" cy="50" r="15" fill="#124C3E"/><circle cx="50" cy="50" r="8" fill="#9E5626"/></svg>
+    <h2 class="rv" style="--d:1">Keep the family <em>in his memory.</em></h2>
+    <p class="quote rv" style="--d:2">Every relative is a face, their real voice, and their relationship to the elder, kept entirely on the device.</p>
+    <a class="repo rv" style="--d:3" href="https://github.com/syahra712/yaadain" target="_blank" rel="noopener">github.com/syahra712/yaadain</a>
+    <p class="by rv" style="--d:4">Yaadain &middot; syahra712</p>
+  </div>
+</section>
+
+</main>
+
+<script>
+/* ---- Demo playlist: edit titles, descriptions or files here. Durations are read from the videos. ---- */
+const CHAPTERS = [
+  { src: 'media/01-elder-phone.mp4',   label: 'The elder\u2019s phone', desc: 'Onboarding, then Dada Jaan\u2019s Urdu home, family tree, who is this, ask, calm and voices.' },
+  { src: 'media/02-safety-story.mp4',  label: 'The safety story',       desc: 'Bilal\u2019s phone, Where is Abu, the safe-zone alert, \u201cI\u2019m on my way\u201d, and Dada Jaan seeing Bilal is coming.' },
+  { src: 'media/03-day-and-night.mp4', label: 'Day and night',          desc: 'The night anchor, the evening home and the day.' }
+];
+
+(function(){
+  const deck = document.getElementById('deck');
+  const slides = [...document.querySelectorAll('.slide')];
+  const N = slides.length;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const pad = n => String(n).padStart(2,'0');
+  document.getElementById('tot').textContent = pad(N);
+  let cur = 0;
+
+  function go(i, instant){
+    i = Math.max(0, Math.min(N-1, i));
+    const top = slides[i].offsetTop;
+    deck.scrollTo({top, behavior: (instant||reduce) ? 'auto' : 'smooth'});
+  }
+  function index(){
+    const y = deck.scrollTop + deck.clientHeight*0.4;
+    let k = 0; slides.forEach((s,i)=>{ if(s.offsetTop <= y) k = i; });
+    return k;
+  }
+  function onScroll(){
+    const max = deck.scrollHeight - deck.clientHeight;
+    document.getElementById('bar').style.transform = 'scaleX(' + (max>0 ? deck.scrollTop/max : 0) + ')';
+    const k = index();
+    if(k !== cur){ cur = k; document.getElementById('cur').textContent = pad(k+1); history.replaceState(null,'','#'+(k+1)); }
+  }
+  deck.addEventListener('scroll', onScroll, {passive:true});
+  document.getElementById('cur').textContent = '01';
+
+  document.addEventListener('keydown', e=>{
+    if(e.target.closest && e.target.closest('video')) { if(e.key===' '||e.key==='ArrowLeft'||e.key==='ArrowRight') return; }
+    const k = e.key;
+    if(['ArrowDown','ArrowRight','PageDown',' '].includes(k) && !e.shiftKey){ e.preventDefault(); go(index()+1); }
+    else if(['ArrowUp','ArrowLeft','PageUp'].includes(k) || (k===' ' && e.shiftKey)){ e.preventDefault(); go(index()-1); }
+    else if(k==='Home'){ e.preventDefault(); go(0); }
+    else if(k==='End'){ e.preventDefault(); go(N-1); }
+  });
+  document.getElementById('next').onclick = ()=>go(index()+1);
+  document.getElementById('prev').onclick = ()=>go(index()-1);
+
+  /* reveal on view */
+  const io = new IntersectionObserver(es=>{
+    es.forEach(en=>{ en.target.classList.toggle('in', en.isIntersecting && en.intersectionRatio>0.35); onVisible(en.target, en.isIntersecting && en.intersectionRatio>0.35); });
+  }, {root: deck, threshold:[0,.35,.6]});
+  slides.forEach(s=>io.observe(s));
+
+  /* deep link: ?slide=N or #N */
+  const q = new URLSearchParams(location.search).get('slide') || location.hash.replace('#','');
+  const start = parseInt(q,10);
+  if(start>=1 && start<=N){ requestAnimationFrame(()=>{ go(start-1, true); onScroll(); }); }
+
+  /* pointer parallax / tilt */
+  if(!reduce){
+    slides.filter(s=>s.hasAttribute('data-tilt')).forEach(s=>{
+      s.addEventListener('pointermove', e=>{
+        const r = s.getBoundingClientRect();
+        s.style.setProperty('--mx', ((e.clientX-r.left)/r.width-.5).toFixed(3));
+        s.style.setProperty('--my', ((e.clientY-r.top)/r.height-.5).toFixed(3));
+      });
+      s.addEventListener('pointerleave', ()=>{ s.style.setProperty('--mx',0); s.style.setProperty('--my',0); });
+    });
+  }
+
+  /* safety step-through */
+  const btns = [...document.querySelectorAll('#steps button')];
+  const imgs = [...document.querySelectorAll('#stg img')];
+  const tags = ['Bilal’s phone','Bilal’s phone','Bilal’s phone','Dada Jaan’s phone','Dada Jaan’s phone','A stranger reads it'];
+  const DUR = 5200;
+  let step = 0, timer = null, started = 0, paused = false, visible = false;
+  const fill = document.getElementById('pfill');
+  function setStep(i){
+    step = i;
+    btns.forEach((b,k)=>b.classList.toggle('on', k===i));
+    imgs.forEach((m,k)=>m.classList.toggle('on', k===i));
+    document.getElementById('stgTag').textContent = tags[i];
+    fill.style.transition='none'; fill.style.width='0';
+    if(!reduce && !paused && visible){ void fill.offsetWidth; fill.style.transition='width '+DUR+'ms linear'; fill.style.width='100%'; }
+    clearTimeout(timer);
+    if(!reduce && !paused && visible) timer = setTimeout(()=>setStep((step+1)%btns.length), DUR);
+  }
+  btns.forEach((b,k)=>b.addEventListener('click', ()=>{ paused = true; setStep(k); fill.style.width='0'; }));
+  function onVisible(el, vis){
+    if(el.id==='s6'){ visible = vis; if(vis){ paused=false; setStep(step); } else { clearTimeout(timer); } }
+    if(el.id==='s11' && !vis){ const v=document.getElementById('vid'); if(v && !v.paused) v.pause(); }
+  }
+
+  /* video playlist */
+  const vid = document.getElementById('vid');
+  const vph = document.getElementById('vph');
+  const list = document.getElementById('chap');
+  const fmt = t => isFinite(t) ? Math.floor(t/60)+':'+pad(Math.floor(t%60)) : '';
+  let idx = 0;
+  CHAPTERS.forEach((c,i)=>{
+    const li = document.createElement('li');
+    li.innerHTML = '<button><b class="n"></b><span><strong></strong><em></em></span><time></time></button>';
+    li.querySelector('.n').textContent = i+1;
+    li.querySelector('strong').textContent = c.label;
+    li.querySelector('em').textContent = c.desc;
+    li.firstChild.addEventListener('click', ()=>load(i, true));
+    list.appendChild(li);
+    c.time = li.querySelector('time');
+    /* durations from metadata */
+    const t = document.createElement('video'); t.preload = 'metadata'; t.muted = true;
+    t.addEventListener('loadedmetadata', ()=>{ c.time.textContent = fmt(t.duration); });
+    t.src = c.src;
+  });
+  const cbtns = [...list.querySelectorAll('button')];
+  function load(i, play){
+    idx = i; cbtns.forEach((b,k)=>b.classList.toggle('on', k===i));
+    vph.classList.remove('missing');
+    vid.src = CHAPTERS[i].src; vid.load();
+    if(play) vid.play().catch(()=>{});
+  }
+  vid.addEventListener('ended', ()=>{ if(idx < CHAPTERS.length-1) load(idx+1, true); });
+  vid.addEventListener('error', ()=>vph.classList.add('missing'));
+  vid.addEventListener('loadeddata', ()=>vph.classList.remove('missing'));
+  cbtns[0].classList.add('on');
+  const pa = document.createElement('button'); pa.className='playall'; pa.textContent='Play all';
+  pa.onclick = ()=>load(0, true);
+  list.parentNode.insertBefore(pa, list);
+  window.__vid = vid;
+})();
+</script>
+</body>
+</html>
