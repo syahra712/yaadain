@@ -162,6 +162,8 @@ the logo for 3 seconds, enter PIN 1947 and open **Demo controls**. From there yo
 can load the demo family, switch between Dada Jaan's, Bilal's and Fatima's phones,
 make him leave home, answer the alert, and preview the evening and night screens.
 
+**For reviewers:** [Technical brief](docs/TECHNICAL.md) (architecture, hard engineering, tests, honest limitations).
+
 ## Watch it
 
 **Presentation.** A 13-slide walkthrough of the whole app.
