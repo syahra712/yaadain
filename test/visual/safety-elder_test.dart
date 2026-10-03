@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:yaadain/data/demo_seed.dart';
 import 'package:yaadain/routes.dart';
@@ -86,5 +87,35 @@ void main() {
     await pumpScreen(tester, const IfFoundScreen(english: true), seeded: false);
     expect(tester.takeException(), isNull);
     await snap(tester, 'IfFound_empty_en');
+  });
+
+  testWidgets('IfFound Back returns to Madad', (tester) async {
+    await pumpScreen(tester, const SizedBox());
+    final nav = appNavigatorKey.currentState!;
+    nav.pushNamed(Routes.madad);
+    await settle(tester);
+    nav.pushNamed(Routes.ifFound, arguments: const IfFoundArgs());
+    await settle(tester);
+    await tester.binding.handlePopRoute();
+    await settle(tester);
+    expect(find.byType(IfFoundScreen), findsNothing);
+    expect(find.byType(MadadScreen), findsOneWidget);
+  });
+
+  testWidgets('IfFound Back with nothing underneath keeps the app open', (tester) async {
+    final exits = <String>[];
+    final messenger = tester.binding.defaultBinaryMessenger;
+    messenger.setMockMethodCallHandler(SystemChannels.platform, (call) async {
+      if (call.method == 'SystemNavigator.pop') exits.add(call.method);
+      return null;
+    });
+    addTearDown(() => messenger.setMockMethodCallHandler(SystemChannels.platform, null));
+    await pumpScreen(tester, const IfFoundScreen());
+    await tester.binding.handlePopRoute();
+    await settle(tester);
+    expect(exits, isEmpty);
+    expect(find.byType(IfFoundScreen), findsNothing);
+    expect(find.byType(MadadScreen), findsOneWidget);
+    expect(appNavigatorKey.currentState!.canPop(), isTrue);
   });
 }

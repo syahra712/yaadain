@@ -3,7 +3,9 @@ import 'package:provider/provider.dart';
 
 import '../../design/design.dart';
 import '../../models/family_member.dart';
+import '../../routes.dart';
 import '../../state/app_state.dart';
+import '../../util/time_mode.dart';
 import '../../util/urdu_format.dart';
 import 'widgets/safety_elder_widgets.dart';
 
@@ -40,9 +42,28 @@ class _IfFoundScreenState extends State<IfFoundScreen> {
     final contacts = SafetyContacts.of(app);
     final id = SafetyIdentity.of(app);
     final photo = app.elder.photoPath;
-    return _en
-        ? _english(app, contacts, id, photo)
-        : _urdu(app, contacts, id, photo);
+    // System Back must never close the app from here: go back to Madad.
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) {
+        if (!didPop) _back(app);
+      },
+      child: _en
+          ? _english(app, contacts, id, photo)
+          : _urdu(app, contacts, id, photo),
+    );
+  }
+
+  /// Pops to Madad. With nothing underneath (a stack rebuilt by a view switch
+  /// or time preview), rebuilds home + Madad instead of exiting.
+  void _back(AppState app) {
+    final nav = Navigator.of(context);
+    if (nav.canPop()) {
+      nav.pop();
+      return;
+    }
+    goRoot(elderRouteForTime(app.now));
+    nav.pushNamed(Routes.madad);
   }
 
   // ── Urdu state ────────────────────────────────────────────────────────
