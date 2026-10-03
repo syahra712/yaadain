@@ -164,17 +164,18 @@ make him leave home, answer the alert, and preview the evening and night screens
 
 ## Watch it
 
-**Presentation.** A 13-slide cinematic walkthrough of the whole app, one self-contained page: [`docs/index.html`](docs/index.html). GitHub shows HTML files as source, so open it one of two ways:
+**Presentation.** A 13-slide walkthrough of the whole app.
 
-- Online, once GitHub Pages is on for the `docs` folder: https://syahra712.github.io/yaadain/
-- Offline: clone or download the repo and double-click `docs/index.html`. The page and its fonts and screens are all inside that one file. The three recordings are the only separate files, in `docs/media/`.
+- **One click:** [**Open the presentation**](docs/PRESENTATION.md). All 13 slides, right in GitHub.
+- **Animated version:** [open the cinematic page](https://htmlpreview.github.io/?https://github.com/syahra712/yaadain/blob/main/docs/index.html). The slides animate there. The recordings play from [`docs/media/`](docs/media/).
+- Offline: download the repo and double-click `docs/index.html`.
 
-[![Title slide](docs/preview/slide-01.png)](docs/index.html)
+[![Title slide](docs/preview/slide-01.png)](docs/PRESENTATION.md)
 
 | | |
 |---|---|
-| [![The elder's phone](docs/preview/slide-05.png)](docs/index.html) | [![The safety story](docs/preview/slide-06.png)](docs/index.html) |
-| [![Tools for the family](docs/preview/slide-07.png)](docs/index.html) | [![The demo](docs/preview/slide-11.png)](docs/index.html) |
+| [![The elder's phone](docs/preview/slide-05.png)](docs/PRESENTATION.md) | [![The safety story](docs/preview/slide-06.png)](docs/PRESENTATION.md) |
+| [![Tools for the family](docs/preview/slide-07.png)](docs/PRESENTATION.md) | [![The demo](docs/preview/slide-11.png)](docs/PRESENTATION.md) |
 
 **Recordings.** Three short screen recordings of the Android build, taken on an emulator in demo mode. GitHub plays each one in the browser:
 
